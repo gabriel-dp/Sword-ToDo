@@ -5,12 +5,11 @@ textarea {
     border: none;
     margin-top: 15px;
     margin-bottom: 20px;
-    background-color: #444;
     color:ghostwhite;
     border: none;
     width: 100%;
     min-height: 100px;
-    resize: vertical;
+    resize: none;
 }
 
 .back-button-container {
