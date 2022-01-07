@@ -18,6 +18,11 @@ const TaskList = ({tasks, handleTaskClick, handleTaskDelete}) => {
                 }
             </>
         );
+    } else {
+        return (
+            <>
+            </>
+        );
     }
 };
 
