@@ -15,6 +15,10 @@
     color:white;
 }
 
+.add-task-input:focus {
+    outline: #ddd solid 1px;
+}
+
 .add-task-button-container {
     margin-left: 10px;
     flex: 1;
