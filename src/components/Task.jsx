@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CgTrashEmpty } from 'react-icons/cg';
-import { BiRedo, BiCheck } from 'react-icons/bi'
+import { BiRedo, BiCheck, BiTrashAlt } from 'react-icons/bi'
 
 import './styles/Task.css';
 
@@ -33,7 +32,7 @@ const Task = ({task, handleTaskClick, handleTaskDelete}) => {
 						{task.completed ? (<BiRedo/>) : (<BiCheck/>)}
 					</button>
 					<button className='delete-task-button' onClick={() => handleTaskDelete(task.id)}>
-						<CgTrashEmpty/>
+						<BiTrashAlt/>
 					</button>
 				</div>
 			</div>
