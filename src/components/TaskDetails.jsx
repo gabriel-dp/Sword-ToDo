@@ -3,11 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 
 import Header from './Header.jsx';
+import ColorSelector from './ColorSelector.jsx';
 import Button from './Button.jsx';
 
 import './styles/TaskDetails.css';
 
-const TaskDetails = ({tasks, handleChangeDescription}) => {
+const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor}) => {
     const params = useParams();
 
     const navigate = useNavigate();
@@ -16,9 +17,11 @@ const TaskDetails = ({tasks, handleChangeDescription}) => {
     }
 
     let description = '';
+    let color = '';
     tasks.map(task => {
         if (task.title === params.taskTitle) {
             description = task.description;
+            color = task.color;
         }
     });
 
@@ -31,9 +34,18 @@ const TaskDetails = ({tasks, handleChangeDescription}) => {
         handleChangeDescription(params.taskTitle, inputData);
     }, [inputData]);
 
+    const handleClickColor = (color) => {
+        handleChangeColor(params.taskTitle, color);
+    }
+
+
     return ( 
         <>
             <Header text={params.taskTitle}/>
+            <ColorSelector 
+                selected={color}
+                handleClickColor={handleClickColor}
+            />
             <TextareaAutosize 
                 value={inputData}
                 onChange={handleInputChange}

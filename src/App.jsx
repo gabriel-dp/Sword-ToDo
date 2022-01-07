@@ -34,6 +34,7 @@ const App = () => {
 				id:	uuidv4(),
 				completed: false,
 				description: "",
+				color: '#7fffd4',
 			}];
 	
 			setTasks(newTasks);
@@ -48,6 +49,15 @@ const App = () => {
 	const handleChangeDescription = (taskName, text) => {
 		const newTasks = tasks.map(task => {
 			if (task.title === taskName) return { ...task, description: text};
+			return task;
+		});
+
+		setTasks(newTasks);
+	}
+
+	const handleChangeColor = (taskName, hex) => {
+		const newTasks = tasks.map(task => {
+			if (task.title === taskName) return { ...task, color: hex};
 			return task;
 		});
 
@@ -77,6 +87,7 @@ const App = () => {
 							<TaskDetails
 								tasks={tasks}
 								handleChangeDescription={handleChangeDescription}
+								handleChangeColor={handleChangeColor}
 							/>
 						}
 					/>
