@@ -12,6 +12,10 @@ textarea {
     resize: none;
 }
 
+textarea:focus {
+    outline: #ddd solid 1px;
+}
+
 .back-button-container {
     max-width: 50%;
 }
