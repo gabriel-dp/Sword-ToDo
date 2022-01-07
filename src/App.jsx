@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
@@ -10,7 +10,12 @@ import TaskDetails from './components/TaskDetails';
 import './App.css';
 
 const App = () => {
-	const [tasks, setTasks] = useState ([]);
+
+	const [tasks, setTasks] = useState (JSON.parse(window.localStorage.getItem('tasks_data')));
+
+	useEffect(() => {
+		window.localStorage.setItem('tasks_data', JSON.stringify(tasks));
+	}, [tasks]);
 
 	const handleTaskClick = (taskId) => {
 		const newTasks = tasks.map(task => {
