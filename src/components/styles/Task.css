@@ -27,7 +27,8 @@
 }
 
 .complete-task-button,
-.delete-task-button {
+.delete-task-button,
+.drag-task-button {
     color: aquamarine;
     border: none;
     background-color: #444;

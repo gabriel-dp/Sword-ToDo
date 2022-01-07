@@ -64,6 +64,36 @@ const App = () => {
 		setTasks(newTasks);
 	}
 
+	const handleChangeOrder = (index, movement) => {
+
+		var newTasks;
+		function arraymove(arr, fromIndex, toIndex) {
+			var element = arr[fromIndex];
+			arr.splice(fromIndex, 1);
+			arr.splice(toIndex, 0, element);
+			newTasks = arr;
+		}
+
+		if (index == 0) {
+			if (movement) {
+				arraymove(tasks, 0, 1)
+			} else return;
+		} else if (index == tasks.length) {
+			if (!movement) {
+				arraymove(tasks, tasks.length, tasks.lenght-1)
+			} else return;
+		} else {
+			if (movement) {
+				arraymove(tasks, index, index+1)
+			} else {
+				arraymove(tasks, index, index-1)
+			}
+		}
+
+		setTasks([]);
+		setTasks(newTasks);
+	}
+
 	return (
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<div className='container'>
@@ -78,6 +108,7 @@ const App = () => {
 									tasks={tasks} 
 									handleTaskClick={handleTaskClick} 
 									handleTaskDelete={handleTaskDelete}
+									handleChangeOrder={handleChangeOrder}
 								/>
 							</>
 						} 

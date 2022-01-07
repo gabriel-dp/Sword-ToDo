@@ -1,18 +1,35 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BiRedo, BiCheck, BiTrashAlt } from 'react-icons/bi'
+import Draggable from 'react-draggable';
+import { BiRedo, BiCheck, BiTrashAlt, BiMoveVertical } from 'react-icons/bi'
 
 import './styles/Task.css';
 
-const Task = ({task, handleTaskClick, handleTaskDelete}) => {
+const Task = ({index, task, handleTaskClick, handleTaskDelete, handleChangeOrder}) => {
 	const navigate = useNavigate();
-
 	const handleTaskDetailsClick = () => {
 		navigate(`/${task.title}`);
 	}
+	
+	const handleDrag = (e, ui) => {
+		if (Math.abs(ui.y) >= 60) {
+			handleChangeOrder(index, (ui.y > 0));
+		}
+	}	
+
+	const handleStopDrag = (e, ui) => {
+		ui.node.style.transform = "translate(0,0)";
+	}
+	
 
 	return (
-		<>
+		<Draggable
+			axis="y"
+			handle=".drag-task-button"
+			onDrag={handleDrag}
+			onStop={handleStopDrag}
+			bounds={index==0 ? {top:0} : {}}
+		>
 			<div 
 				className='task-container' 
 				style={task.completed ? 
@@ -34,9 +51,12 @@ const Task = ({task, handleTaskClick, handleTaskDelete}) => {
 					<button className='delete-task-button' onClick={() => handleTaskDelete(task.id)}>
 						<BiTrashAlt/>
 					</button>
+					<button className='drag-task-button'>
+						<BiMoveVertical/>
+					</button>
 				</div>
 			</div>
-		</>
+		</Draggable>
 	);
 }
  
