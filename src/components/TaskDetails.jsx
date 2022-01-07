@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 
-import Button from './Button.jsx';
 import Header from './Header.jsx';
+import Button from './Button.jsx';
 
 import './styles/TaskDetails.css';
 
