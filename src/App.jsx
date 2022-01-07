@@ -10,8 +10,9 @@ import TaskDetails from './components/TaskDetails';
 import './App.css';
 
 const App = () => {
-	const previous_data = JSON.parse(window.localStorage.getItem('tasks_data'));
-	const [tasks, setTasks] = useState (previous_data ? previous_data : []);
+	let previous_data = JSON.parse(window.localStorage.getItem('tasks_data'));
+	if (previous_data === null) previous_data = [];
+	const [tasks, setTasks] = useState (previous_data);
 
 	useEffect(() => {
 		window.localStorage.setItem('tasks_data', JSON.stringify(tasks));
