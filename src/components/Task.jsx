@@ -1,6 +1,7 @@
 import React from 'react';
-import { CgClose, CgCheckO } from 'react-icons/cg';
 import { useNavigate } from 'react-router-dom';
+import { CgTrashEmpty } from 'react-icons/cg';
+import { BiRedo, BiCheck } from 'react-icons/bi'
 
 import './styles/Task.css';
 
@@ -29,10 +30,10 @@ const Task = ({task, handleTaskClick, handleTaskDelete}) => {
 				</div>
 				<div className="buttons-container">
 					<button className='complete-task-button' onClick={() => handleTaskClick(task.id)}>
-						<CgCheckO/>
+						{task.completed ? (<BiRedo/>) : (<BiCheck/>)}
 					</button>
 					<button className='delete-task-button' onClick={() => handleTaskDelete(task.id)}>
-						<CgClose/>
+						<CgTrashEmpty/>
 					</button>
 				</div>
 			</div>
