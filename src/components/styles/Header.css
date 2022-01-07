@@ -1,0 +1,9 @@
+.header-container {
+    width: 100%;
+    height: 40px;
+    color:white;
+    font-size: 25px;
+    font-weight: bold;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
