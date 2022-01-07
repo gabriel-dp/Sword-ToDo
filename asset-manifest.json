@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Sword-ToDo/static/css/main.369de7a1.css",
-    "main.js": "/Sword-ToDo/static/js/main.2479597c.js",
+    "main.js": "/Sword-ToDo/static/js/main.9c703b41.js",
     "index.html": "/Sword-ToDo/index.html",
     "main.369de7a1.css.map": "/Sword-ToDo/static/css/main.369de7a1.css.map",
-    "main.2479597c.js.map": "/Sword-ToDo/static/js/main.2479597c.js.map"
+    "main.9c703b41.js.map": "/Sword-ToDo/static/js/main.9c703b41.js.map"
   },
   "entrypoints": [
     "static/css/main.369de7a1.css",
-    "static/js/main.2479597c.js"
+    "static/js/main.9c703b41.js"
   ]
 }
