@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
-import { BiTrashAlt } from 'react-icons/bi';
+import { FaTrash } from 'react-icons/fa';
 
 import Header from './Header.jsx';
 import ColorSelector from './ColorSelector.jsx';
@@ -56,7 +56,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                 />
                 <div className="buttons-container">
                     <button className='delete-task-button' onClick={() => {handleTaskDelete(taskName); backToHome();}}>
-                        <BiTrashAlt/>
+                        <FaTrash/>
                     </button>
                 </div>
             </div>
