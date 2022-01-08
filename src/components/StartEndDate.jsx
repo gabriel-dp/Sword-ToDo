@@ -21,6 +21,7 @@ const StartEndDate = ({taskName, handleChangeDates, initialStartDate, initialEnd
                     dateFormat="MMMM d, yyyy"
                     onChange={(date) => setStartDate(date)}
                     maxDate={endDate}
+                    wrapperClassName="datePicker"
                 />            
             </div>
             <div className="date-container">
@@ -30,6 +31,7 @@ const StartEndDate = ({taskName, handleChangeDates, initialStartDate, initialEnd
                     dateFormat="MMMM d, yyyy"
                     onChange={(date) => setEndDate(date)}
                     minDate={startDate}
+                    wrapperClassName="datePicker"
                 />            
             </div>
         </div>

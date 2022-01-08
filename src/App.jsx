@@ -38,7 +38,7 @@ const App = () => {
 				description: '',
 				color: '#7fffd4',
 				startDate: new Date(),
-				endDate: new Date(),
+				endDate: '',
 			}];
 	
 			setTasks(newTasks);

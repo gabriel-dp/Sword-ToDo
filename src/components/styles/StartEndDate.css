@@ -11,3 +11,14 @@
     font-weight: bold;
     font-size: 17px;
 }
+
+.date-container input {
+    background-color: #444;
+    color: white;
+    height: 30px;
+    width: 75%;
+    border-radius: 15px;
+    border: none;
+    padding: 0 20px;
+    margin: 5px 0;
+}
