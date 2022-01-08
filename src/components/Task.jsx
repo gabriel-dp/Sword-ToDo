@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
-import { BiMoveVertical } from 'react-icons/bi'
+import { FaRegDotCircle, FaRegCircle} from 'react-icons/fa';
 
 import './styles/Task.css';
 
-const Task = ({index, task, handleChangeOrder}) => {
+const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	//navigates to the task description
 	const navigate = useNavigate();
 	const handleTaskDetailsClick = () => {
@@ -26,7 +26,6 @@ const Task = ({index, task, handleChangeOrder}) => {
 	return (
 		<Draggable
 			axis="y"
-			handle=".drag-task-button"
 			onDrag={handleDrag}
 			onStop={handleStopDrag}
 			bounds={index==0 ? {top:0} : {}}
@@ -46,8 +45,8 @@ const Task = ({index, task, handleChangeOrder}) => {
 					<p>{task.title}</p>
 				</div>
 				<div className="buttons-container">
-					<button className='drag-task-button' onClick={(event) => event.stopPropagation()}>
-						<BiMoveVertical/>
+					<button className='complete-task-button' onClick={(event) => {handleChangeComplete(task.id); event.stopPropagation()}}>
+						{task.completed ? (<FaRegDotCircle/>) : (<FaRegCircle/>)}
 					</button>
 				</div>
 			</div>

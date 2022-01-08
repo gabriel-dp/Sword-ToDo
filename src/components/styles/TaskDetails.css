@@ -12,7 +12,6 @@
     align-items: center;
 }
 
-.complete-task-button,
 .delete-task-button {
     color: aquamarine;
     border: none;
@@ -22,7 +21,6 @@
     margin: 0 5px;
 }
 
-.complete-task-button:hover,
 .delete-task-button:hover {
     color:white
 }

@@ -8,29 +8,37 @@
     align-items: center;
     color: white;
     cursor: pointer;
+    user-select: none;
+    transition: background 0.2s ease;
+}
+
+.task-container:hover {
+    background-color: #555;
 }
 
 .task-title-container p {
     overflow: hidden; 
     text-overflow: ellipsis;
+    user-select: none
 }
 
 .buttons-container {
     min-width: 20%;
+    height: 100%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.drag-task-button {
+.complete-task-button {
     color: aquamarine;
     border: none;
-    background-color: #444;
-    font-size: 16px;
+    background-color: transparent;
+    font-size: 15px;
     cursor: pointer;
     margin: 0 5px;
 }
 
-.drag-task-button:hover {
+.complete-task-button:hover {
     color:white
 }

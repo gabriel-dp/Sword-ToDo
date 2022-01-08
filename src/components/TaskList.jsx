@@ -2,7 +2,7 @@ import React from 'react';
 
 import Task from './Task.jsx'
 
-const TaskList = ({tasks, handleChangeOrder}) => {
+const TaskList = ({tasks, handleChangeComplete, handleChangeOrder}) => {
     if(tasks) {
         return (
             <>
@@ -12,6 +12,7 @@ const TaskList = ({tasks, handleChangeOrder}) => {
                             index={index}
                             key={task.id}
                             task={task} 
+                            handleChangeComplete={handleChangeComplete}
                             handleChangeOrder={handleChangeOrder}
                         />
                     ))

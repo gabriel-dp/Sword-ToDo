@@ -20,9 +20,9 @@ const App = () => {
 		window.localStorage.setItem('tasks_data', JSON.stringify(tasks));
 	}, [tasks]);
 
-	const handleChangeComplete = (taskName) => {
+	const handleChangeComplete = (taskId) => {
 		const newTasks = tasks.map(task => {
-			if (task.title === taskName) return { ...task, completed: !task.completed };
+			if (task.id === taskId) return { ...task, completed: !task.completed };
 			return task;
 		});
 
@@ -102,8 +102,9 @@ const App = () => {
 								<AddTask handleTaskAddition={handleTaskAddition}/>
 								<TaskList 
 									tasks={tasks} 
+									handleChangeComplete={handleChangeComplete} 
 									handleChangeOrder={handleChangeOrder}
-									/>
+								/>
 							</>
 						} 
 						/>
@@ -111,7 +112,6 @@ const App = () => {
 						path="/:taskTitle" exact element={
 							<TaskDetails
 								tasks={tasks}
-								handleChangeComplete={handleChangeComplete} 
 								handleTaskDelete={handleTaskDelete}
 								handleChangeDescription={handleChangeDescription}
 								handleChangeColor={handleChangeColor}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
-import { BiRedo, BiCheck, BiTrashAlt } from 'react-icons/bi'
+import { BiTrashAlt } from 'react-icons/bi';
 
 import Header from './Header.jsx';
 import ColorSelector from './ColorSelector.jsx';
@@ -55,9 +55,6 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                     handleClickColor={handleClickColor}
                 />
                 <div className="buttons-container">
-                    <button className='complete-task-button' onClick={() => handleChangeComplete(taskName)}>
-                        {completed ? (<BiRedo/>) : (<BiCheck/>)}
-                    </button>
                     <button className='delete-task-button' onClick={() => {handleTaskDelete(taskName); backToHome();}}>
                         <BiTrashAlt/>
                     </button>
