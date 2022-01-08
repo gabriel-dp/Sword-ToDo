@@ -11,11 +11,13 @@ const AddTask = ({handleTaskAddition}) => {
         setInputData(e.target.value);
     }
 
+    //subimits the input data
     const handleAddTaskClick = () => {
         handleTaskAddition(inputData);
         setInputData("");
     }
 
+    //submits task with the Enter key
     const handleKeypress = e => {
         if (e.key == 'Enter') handleAddTaskClick();
     };

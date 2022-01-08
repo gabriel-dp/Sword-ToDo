@@ -10,10 +10,12 @@ import TaskDetails from './components/TaskDetails';
 import './App.css';
 
 const App = () => {
+	//get previous data from local storage
 	let previous_data = JSON.parse(window.localStorage.getItem('tasks_data'));
 	if (previous_data === null) previous_data = [];
 	const [tasks, setTasks] = useState (previous_data);
 
+	//saves the data in local storage when tasks is changed
 	useEffect(() => {
 		window.localStorage.setItem('tasks_data', JSON.stringify(tasks));
 	}, [tasks]);
@@ -67,6 +69,8 @@ const App = () => {
 	const handleChangeOrder = (index, movement) => {
 
 		var newTasks;
+
+		//changes the position of a index on array
 		function arraymove(arr, fromIndex, toIndex) {
 			var element = arr[fromIndex];
 			arr.splice(fromIndex, 1);
@@ -74,22 +78,14 @@ const App = () => {
 			newTasks = arr;
 		}
 
-		if (index == 0) {
-			if (movement) {
-				arraymove(tasks, 0, 1)
-			} else return;
-		} else if (index == tasks.length) {
-			if (!movement) {
-				arraymove(tasks, tasks.length, tasks.lenght-1)
-			} else return;
+		//moves the index based on movement direction
+		if (movement) {
+			arraymove(tasks, index, index+1)
 		} else {
-			if (movement) {
-				arraymove(tasks, index, index+1)
-			} else {
-				arraymove(tasks, index, index-1)
-			}
+			arraymove(tasks, index, index-1)
 		}
 
+		//resets the tasks to apply the new tasks
 		setTasks([]);
 		setTasks(newTasks);
 	}

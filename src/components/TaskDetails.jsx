@@ -10,14 +10,11 @@ import Button from './Button.jsx';
 import './styles/TaskDetails.css';
 
 const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete}) => {
+    //gets the name of the task to be edited
     const params = useParams();
     const taskName = params.taskTitle;
 
-    const navigate = useNavigate();
-	const handleBackClick = () => {
-		navigate('/');
-    }
-
+    //gets the task data with the name
     let description = '';
     let color = '';
     let completed;
@@ -28,18 +25,25 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
             completed = task.completed;
         }
     });
-
+    
+    //changes task description
     const [inputData, setInputData] = useState(description);
-    const handleInputChange = (e) => {
-        setInputData(e.target.value);
-    }
-
     useEffect(() => {
         handleChangeDescription(taskName, inputData);
     }, [inputData]);
-
+    const handleInputChange = (e) => {
+        setInputData(e.target.value);
+    }
+    
+    //changes the selected color
     const handleClickColor = (color) => {
         handleChangeColor(taskName, color);
+    }
+    
+    //navigates back to home
+    const navigate = useNavigate();
+    const backToHome = () => {
+        navigate('/');
     }
 
     return ( 
@@ -54,7 +58,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                     <button className='complete-task-button' onClick={() => handleChangeComplete(taskName)}>
                         {completed ? (<BiRedo/>) : (<BiCheck/>)}
                     </button>
-                    <button className='delete-task-button' onClick={() => {handleTaskDelete(taskName); navigate('/');}}>
+                    <button className='delete-task-button' onClick={() => {handleTaskDelete(taskName); backToHome();}}>
                         <BiTrashAlt/>
                     </button>
                 </div>
@@ -66,7 +70,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                 type="text"
             />
             <div className="back-button-container">
-                <Button onClick={handleBackClick}>Back</Button>
+                <Button onClick={backToHome}>Back</Button>
             </div>
         </>
     );

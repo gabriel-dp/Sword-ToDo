@@ -6,22 +6,23 @@ import { BiMoveVertical } from 'react-icons/bi'
 import './styles/Task.css';
 
 const Task = ({index, task, handleChangeOrder}) => {
+	//navigates to the task description
 	const navigate = useNavigate();
 	const handleTaskDetailsClick = () => {
 		navigate(`/${task.title}`);
 	}
 	
+	//controls task draggable
 	const handleDrag = (e, ui) => {
 		if (Math.abs(ui.y) >= 60) {
 			handleChangeOrder(index, (ui.y > 0));
 		}
 	}	
-
+	//returns the container to default position
 	const handleStopDrag = (e, ui) => {
 		ui.node.style.transform = "translate(0,0)";
 	}
 	
-
 	return (
 		<Draggable
 			axis="y"
