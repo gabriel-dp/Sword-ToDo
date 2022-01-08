@@ -6,23 +6,25 @@ import { FaTrash } from 'react-icons/fa';
 import Header from './Header.jsx';
 import ColorSelector from './ColorSelector.jsx';
 import Button from './Button.jsx';
+import StartEndDate from './StartEndDate.jsx';
 
 import './styles/TaskDetails.css';
 
-const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete}) => {
+const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete, handleChangeDates}) => {
     //gets the name of the task to be edited
     const params = useParams();
     const taskName = params.taskTitle;
 
     //gets the task data with the name
-    let description = '';
-    let color = '';
-    let completed;
+    let description, color, initialStartDate, initialEndDate = '';
+    let completed = false;
     tasks.map(task => {
         if (task.title === taskName) {
             description = task.description;
             color = task.color;
             completed = task.completed;
+            initialStartDate = task.startDate;
+            initialEndDate = task.endDate;
         }
     });
     
@@ -65,6 +67,12 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                 onChange={handleInputChange}
                 className='task-description'
                 type="text"
+            />
+            <StartEndDate
+                taskName={taskName}
+                handleChangeDates={handleChangeDates}
+                initialStartDate={initialStartDate}
+                initialEndDate={initialEndDate}
             />
             <div className="back-button-container">
                 <Button onClick={backToHome}>Back</Button>

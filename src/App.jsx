@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
-import { BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import AddTask from './components/AddTask';
@@ -35,8 +35,10 @@ const App = () => {
 				title: taskTitle,
 				id:	uuidv4(),
 				completed: false,
-				description: "",
+				description: '',
 				color: '#7fffd4',
+				startDate: new Date(),
+				endDate: new Date(),
 			}];
 	
 			setTasks(newTasks);
@@ -90,6 +92,15 @@ const App = () => {
 		setTasks(newTasks);
 	}
 
+	const handleChangeDates = (taskName, startDate, endDate) => {
+		const newTasks = tasks.map(task => {
+			if (task.title === taskName) return { ...task, startDate: startDate, endDate: endDate};
+			return task;
+		});
+
+		setTasks(newTasks);
+	}
+
 	return (
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<div className='container'>
@@ -115,6 +126,7 @@ const App = () => {
 								handleTaskDelete={handleTaskDelete}
 								handleChangeDescription={handleChangeDescription}
 								handleChangeColor={handleChangeColor}
+								handleChangeDates={handleChangeDates}
 							/>
 						}
 					/>
