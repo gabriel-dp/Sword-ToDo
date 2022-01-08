@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
-import { FaRegDotCircle, FaRegCircle} from 'react-icons/fa';
+import { FaRegDotCircle, FaRegCircle, FaStream} from 'react-icons/fa';
 
 import './styles/Task.css';
 
@@ -45,6 +45,9 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 					<p>{task.title}</p>
 				</div>
 				<div className="buttons-container">
+					<div className="description-icon">
+						{task.description != '' ? (<FaStream/>) : (<></>)}
+					</div>
 					<button className='complete-task-button' onClick={(event) => {handleChangeComplete(task.id); event.stopPropagation()}}>
 						{task.completed ? (<FaRegDotCircle/>) : (<FaRegCircle/>)}
 					</button>

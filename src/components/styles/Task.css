@@ -30,6 +30,12 @@
     align-items: center;
 }
 
+.description-icon {
+    font-size: 15px;
+    color: #888;
+    margin-right: 7px;
+}
+
 .complete-task-button {
     color: aquamarine;
     border: none;
