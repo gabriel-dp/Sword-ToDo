@@ -1,11 +1,11 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
-import { BiRedo, BiCheck, BiTrashAlt, BiMoveVertical } from 'react-icons/bi'
+import { BiMoveVertical } from 'react-icons/bi'
 
 import './styles/Task.css';
 
-const Task = ({index, task, handleTaskClick, handleTaskDelete, handleChangeOrder}) => {
+const Task = ({index, task, handleChangeOrder}) => {
 	const navigate = useNavigate();
 	const handleTaskDetailsClick = () => {
 		navigate(`/${task.title}`);
@@ -32,6 +32,7 @@ const Task = ({index, task, handleTaskClick, handleTaskDelete, handleChangeOrder
 		>
 			<div 
 				className='task-container' 
+				onClick={handleTaskDetailsClick} 
 				style={task.completed ? 
 					{color:'gray', textDecoration: 'line-through'} : 
 					{borderLeft: `8px solid ${task.color}`}
@@ -39,19 +40,12 @@ const Task = ({index, task, handleTaskClick, handleTaskDelete, handleChangeOrder
 			>
 				<div 
 					className='task-title' 
-					onClick={handleTaskDetailsClick} 
 					style={task.completed ? {marginLeft: 8} : {}}
 				>
 					<p>{task.title}</p>
 				</div>
 				<div className="buttons-container">
-					<button className='complete-task-button' onClick={() => handleTaskClick(task.id)}>
-						{task.completed ? (<BiRedo/>) : (<BiCheck/>)}
-					</button>
-					<button className='delete-task-button' onClick={() => handleTaskDelete(task.id)}>
-						<BiTrashAlt/>
-					</button>
-					<button className='drag-task-button'>
+					<button className='drag-task-button' onClick={(event) => event.stopPropagation()}>
 						<BiMoveVertical/>
 					</button>
 				</div>

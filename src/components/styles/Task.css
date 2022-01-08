@@ -7,14 +7,10 @@
     justify-content: space-between;
     align-items: center;
     color: white;
-}
-
-.task-title {
-    width: 80%;
     cursor: pointer;
 }
 
-.task-title p {
+.task-title-container p {
     overflow: hidden; 
     text-overflow: ellipsis;
 }
@@ -26,8 +22,6 @@
     align-items: center;
 }
 
-.complete-task-button,
-.delete-task-button,
 .drag-task-button {
     color: aquamarine;
     border: none;
@@ -37,7 +31,6 @@
     margin: 0 5px;
 }
 
-.complete-task-button:hover,
-.delete-task-button:hover {
+.drag-task-button:hover {
     color:white
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate} from 'react-router-dom';
 
 import Header from './components/Header';
 import AddTask from './components/AddTask';
@@ -18,9 +18,9 @@ const App = () => {
 		window.localStorage.setItem('tasks_data', JSON.stringify(tasks));
 	}, [tasks]);
 
-	const handleTaskClick = (taskId) => {
+	const handleChangeComplete = (taskName) => {
 		const newTasks = tasks.map(task => {
-			if (task.id === taskId) return { ...task, completed: !task.completed };
+			if (task.title === taskName) return { ...task, completed: !task.completed };
 			return task;
 		});
 
@@ -41,8 +41,8 @@ const App = () => {
 		}
 	}
 
-	const handleTaskDelete = (taskId) => {
-		const newTasks = tasks.filter(task => task.id !== taskId);
+	const handleTaskDelete = (taskName) => {
+		const newTasks = tasks.filter(task => task.title !== taskName);
 		setTasks(newTasks);
 	}
 
@@ -106,17 +106,17 @@ const App = () => {
 								<AddTask handleTaskAddition={handleTaskAddition}/>
 								<TaskList 
 									tasks={tasks} 
-									handleTaskClick={handleTaskClick} 
-									handleTaskDelete={handleTaskDelete}
 									handleChangeOrder={handleChangeOrder}
-								/>
+									/>
 							</>
 						} 
-					/>
+						/>
 					<Route
 						path="/:taskTitle" exact element={
 							<TaskDetails
 								tasks={tasks}
+								handleChangeComplete={handleChangeComplete} 
+								handleTaskDelete={handleTaskDelete}
 								handleChangeDescription={handleChangeDescription}
 								handleChangeColor={handleChangeColor}
 							/>
