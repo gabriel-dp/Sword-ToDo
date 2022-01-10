@@ -13,17 +13,18 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	}
 	
 	//controls task draggable
-	const [allowClick, setAllowClick] = useState(true);
+	const [allowClick, setAllowClick] = useState(false);
 	const handleDrag = (e, ui) => {
 		if (Math.abs(ui.y) >= 60) {
 			handleChangeOrder(index, (ui.y > 0));
 		}
 
-		if (allowClick)	setTimeout(() => setAllowClick(false), 500);
+		if (allowClick)	setTimeout(() => setAllowClick(false), 250);
 	}	
 	//returns the container to default position
 	const handleStopDrag = (e, ui) => {
 		ui.node.style.transform = "translate(0,0)";
+		if (allowClick) handleTaskDetailsClick();
 	}
 	const handleTouchDown = () => {
 		setAllowClick(true);
@@ -37,10 +38,11 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 			onMouseDown={handleTouchDown}
 			bounds={index==0 ? {top:0} : {}}
 			allowAnyClick={true}
+			cancel=".complete-task-button"
 		>
 			<div 
 				className='task-container' 
-				onClick={handleTaskDetailsClick} 
+				onClick={handleTaskDetailsClick}
 				style={task.completed ? 
 					{color:'gray', textDecoration: 'line-through'} : 
 					{borderLeft: `8px solid ${task.color}`}
