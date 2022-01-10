@@ -6,6 +6,9 @@ import { FaRegDotCircle, FaRegCircle, FaStream} from 'react-icons/fa';
 import './styles/Task.css';
 
 const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
+	//disable warning
+	const nodeRef = React.useRef(null);
+
 	//navigates to the task description
 	const navigate = useNavigate();
 	const handleTaskDetailsClick = () => {
@@ -13,7 +16,7 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	}
 	
 	//controls task draggable
-	const [allowClick, setAllowClick] = useState(false);
+	const [allowClick, setAllowClick] = useState(false); 					//allow the click on hold a little bit on drag (fix mobile bug)
 	const handleDrag = (e, ui) => {
 		if (Math.abs(ui.y) >= 60) {
 			handleChangeOrder(index, (ui.y > 0));
@@ -39,6 +42,7 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 			bounds={index==0 ? {top:0} : {}}
 			allowAnyClick={true}
 			cancel=".complete-task-button"
+			nodeRef={nodeRef}
 		>
 			<div 
 				className='task-container' 
@@ -47,6 +51,7 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 					{color:'gray', textDecoration: 'line-through'} : 
 					{borderLeft: `8px solid ${task.color}`}
 				}
+				ref={nodeRef}
 			>
 				<div 
 					className='task-title' 
