@@ -17,20 +17,20 @@ const StartEndDate = ({taskName, handleChangeDates, initialStartDate, initialEnd
             <div className="date-container">
                 Start
                 <DatePicker 
-                    selected={startDate} 
+                    selected={new Date(startDate)} 
+                    maxDate={(initialEndDate == '') ? undefined : new Date(endDate)}
                     dateFormat="MMMM d, yyyy"
                     onChange={(date) => setStartDate(date)}
-                    maxDate={endDate}
                     wrapperClassName="datePicker"
                 />            
             </div>
             <div className="date-container">
                 End
                 <DatePicker 
-                    selected={endDate} 
+                    selected={(initialEndDate == '') ? undefined : new Date(endDate)} 
+                    minDate={new Date (startDate)}
                     dateFormat="MMMM d, yyyy"
                     onChange={(date) => setEndDate(date)}
-                    minDate={startDate}
                     wrapperClassName="datePicker"
                 />            
             </div>
