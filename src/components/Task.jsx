@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import { FaRegDotCircle, FaRegCircle, FaStream} from 'react-icons/fa';
@@ -9,26 +9,34 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	//navigates to the task description
 	const navigate = useNavigate();
 	const handleTaskDetailsClick = () => {
-		navigate(`/${task.title}`);
+		if (allowClick) navigate(`/${task.title}`);
 	}
 	
 	//controls task draggable
+	const [allowClick, setAllowClick] = useState(true);
 	const handleDrag = (e, ui) => {
 		if (Math.abs(ui.y) >= 60) {
 			handleChangeOrder(index, (ui.y > 0));
 		}
+
+		if (allowClick)	setTimeout(() => setAllowClick(false), 500);
 	}	
 	//returns the container to default position
 	const handleStopDrag = (e, ui) => {
 		ui.node.style.transform = "translate(0,0)";
 	}
-	
+	const handleTouchDown = () => {
+		setAllowClick(true);
+	}
+
 	return (
 		<Draggable
 			axis="y"
 			onDrag={handleDrag}
 			onStop={handleStopDrag}
+			onMouseDown={handleTouchDown}
 			bounds={index==0 ? {top:0} : {}}
+			allowAnyClick={true}
 		>
 			<div 
 				className='task-container' 
