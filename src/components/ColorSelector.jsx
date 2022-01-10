@@ -11,6 +11,7 @@ const ColorSelector = ({selected, handleClickColor}) => {
             {
                 colors.map((color) => (
                     <div 
+                        key={color}
                         className="color-circle" 
                         style={{backgroundColor: `${color}`}}
                         onClick={()=>handleClickColor(color)}
