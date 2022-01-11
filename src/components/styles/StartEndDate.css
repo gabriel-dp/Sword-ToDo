@@ -8,18 +8,46 @@
     width: 100%;
     height: 60px;
     margin-bottom: 10px;
+}
+
+.date-container p {
     color:white;
     font-weight: bold;
     font-size: 17px;
 }
 
-.date-container input {
+.date-selector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #444;
+    margin-top: 5px;
+    width: 90%;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0 15px;
+}
+
+.calendar-icon {
+    color: aquamarine;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.calendar-icon:hover {
+    color:white;
+}
+
+.date-selector input {
     background-color: #444;
     color: white;
-    height: 30px;
-    width: 75%;
-    border-radius: 15px;
+    width: 130px;
     border: none;
-    padding: 0 20px;
-    margin: 5px 0;
+    pointer-events: none;
+    font-size: 14px;
+    padding-bottom: 3px;
+}
+
+.date-container input:focus {
+    outline: #ddd solid 1px;
 }
