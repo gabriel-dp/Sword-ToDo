@@ -6,20 +6,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./styles/StartEndDate.css";
 
 const StartEndDate = ({taskName, handleChangeDates, initialStartDate, initialEndDate}) => {
+    //initializes states of dates and datepickers
     const [startDate, setStartDate] = useState(initialStartDate);
     const [endDate, setEndDate] = useState(initialEndDate);
-    const [isOpen, setIsOpen] = useState([false, false]);
+    const [datepickerOpen, setDatepickerOpen] = useState([false, false]);
 
+    //atualizes the dates storaged
     useEffect(()=>{
         handleChangeDates(taskName, startDate, endDate);
     }, [startDate, endDate])
 
-    useEffect(()=>{
-        console.log(isOpen);
-    }, [isOpen])
-
-    const handleCalendar = (first, second) => {
-        setIsOpen([(first ? !isOpen[0] : isOpen[0]), (second ? !isOpen[1] : isOpen[1])]);
+    //opens and closes the datepickers
+    const handleDatePickerOpen = (first, second) => {
+        setDatepickerOpen([(first ? !datepickerOpen[0] : datepickerOpen[0]), (second ? !datepickerOpen[1] : datepickerOpen[1])]);
     }
 
     return (
@@ -31,12 +30,12 @@ const StartEndDate = ({taskName, handleChangeDates, initialStartDate, initialEnd
                         selected={(initialStartDate == '') ? undefined : new Date(startDate)} 
                         maxDate={(initialEndDate == '') ? undefined : new Date(endDate)}
                         dateFormat="MMMM d, yyyy"
-                        onChange={(date) => {setStartDate(date); handleCalendar(true, false)}}
-                        placeholderText='Select a start date'
-                        open={isOpen[0]}
-                        onClickOutside={() => handleCalendar(true, false)}
+                        onChange={(date) => {setStartDate(date); handleDatePickerOpen(true, false)}}
+                        placeholderText='Select a date'
+                        open={datepickerOpen[0]}
+                        onClickOutside={() => handleDatePickerOpen(true, false)}
                     />    
-                    <FaCalendar className='calendar-icon' onClick={() => handleCalendar(true, false)}/>     
+                    <FaCalendar className='calendar-icon' onClick={() => handleDatePickerOpen(true, false)}/>     
                 </div>   
             </div>
             <div className="date-container">
@@ -46,12 +45,12 @@ const StartEndDate = ({taskName, handleChangeDates, initialStartDate, initialEnd
                         selected={(initialEndDate == '') ? undefined : new Date(endDate)} 
                         minDate={(initialStartDate == '') ? undefined : new Date(startDate)}
                         dateFormat="MMMM d, yyyy"
-                        onChange={(date) => {setEndDate(date); handleCalendar(false, true)}}
-                        placeholderText='Select a end date'
-                        open={isOpen[1]}
-                        onClickOutside={() => handleCalendar(false, true)}
+                        onChange={(date) => {setEndDate(date); handleDatePickerOpen(false, true)}}
+                        placeholderText='Select a date'
+                        open={datepickerOpen[1]}
+                        onClickOutside={() => handleDatePickerOpen(false, true)}
                     />          
-                    <FaCalendar className='calendar-icon' onClick={() => handleCalendar(false, true)}/>
+                    <FaCalendar className='calendar-icon' onClick={() => handleDatePickerOpen(false, true)}/>
                 </div>  
             </div>
         </div>

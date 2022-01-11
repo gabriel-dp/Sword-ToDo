@@ -37,6 +37,7 @@ textarea {
     width: 100%;
     min-height: 100px;
     resize: none;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 textarea:focus {
