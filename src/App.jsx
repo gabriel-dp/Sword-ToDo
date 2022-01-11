@@ -31,6 +31,13 @@ const App = () => {
 
 	const handleTaskAddition = (taskTitle) => {
 		if (taskTitle !== '') {
+			let isRepeated = false;
+			tasks.map(task => {
+				if (task.title === taskTitle) {
+					isRepeated = true;
+				}
+			});
+
 			const newTasks = [...tasks, {
 				title: taskTitle,
 				id:	uuidv4(),
@@ -41,27 +48,27 @@ const App = () => {
 				endDate: '',
 			}];
 	
-			setTasks(newTasks);
+			if (!isRepeated) setTasks(newTasks);
 		}
 	}
 
-	const handleTaskDelete = (taskName) => {
-		const newTasks = tasks.filter(task => task.title !== taskName);
+	const handleTaskDelete = (taskTitle) => {
+		const newTasks = tasks.filter(task => task.title !== taskTitle);
 		setTasks(newTasks);
 	}
 
-	const handleChangeDescription = (taskName, text) => {
+	const handleChangeDescription = (taskTitle, text) => {
 		const newTasks = tasks.map(task => {
-			if (task.title === taskName) return { ...task, description: text};
+			if (task.title === taskTitle) return { ...task, description: text};
 			return task;
 		});
 
 		setTasks(newTasks);
 	}
 
-	const handleChangeColor = (taskName, hex) => {
+	const handleChangeColor = (taskTitle, hex) => {
 		const newTasks = tasks.map(task => {
-			if (task.title === taskName) return { ...task, color: hex};
+			if (task.title === taskTitle) return { ...task, color: hex};
 			return task;
 		});
 
@@ -92,9 +99,9 @@ const App = () => {
 		setTasks(newTasks);
 	}
 
-	const handleChangeDates = (taskName, startDate, endDate) => {
+	const handleChangeDates = (taskTitle, startDate, endDate) => {
 		const newTasks = tasks.map(task => {
-			if (task.title === taskName) return { ...task, startDate: startDate, endDate: endDate};
+			if (task.title === taskTitle) return { ...task, startDate: startDate, endDate: endDate};
 			return task;
 		});
 

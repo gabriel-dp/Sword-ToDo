@@ -14,7 +14,7 @@ const AddTask = ({handleTaskAddition}) => {
     //subimits the input data
     const handleAddTaskClick = () => {
         handleTaskAddition(inputData);
-        setInputData("");
+        setInputData('');
     }
 
     //submits task with the Enter key
