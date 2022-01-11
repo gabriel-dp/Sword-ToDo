@@ -30,7 +30,7 @@ const App = () => {
 	}
 
 	const handleTaskAddition = (taskTitle) => {
-		let titleFixed = taskTitle.trim() //remove extra spaces
+		const titleFixed = ((taskTitle).replace(/\s+/g, ' ')).trim() //remove extra spaces
 
 		console.log(titleFixed);
 
