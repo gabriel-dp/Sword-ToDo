@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/Sword-ToDo/static/css/main.12ff8185.css",
-    "main.js": "/Sword-ToDo/static/js/main.cdb7bc65.js",
+    "main.css": "/Sword-ToDo/static/css/main.f447d609.css",
+    "main.js": "/Sword-ToDo/static/js/main.2bc807a5.js",
+    "static/media/OpenSans-Regular.ttf": "/Sword-ToDo/static/media/OpenSans-Regular.d7d7b8359eeb9cddfba6.ttf",
+    "static/media/RobotoMono-Regular.ttf": "/Sword-ToDo/static/media/RobotoMono-Regular.418a8f9f65ccad0918af.ttf",
+    "static/media/HemiHead.ttf": "/Sword-ToDo/static/media/HemiHead.6591890a32e20c3e7392.ttf",
     "index.html": "/Sword-ToDo/index.html",
-    "main.12ff8185.css.map": "/Sword-ToDo/static/css/main.12ff8185.css.map",
-    "main.cdb7bc65.js.map": "/Sword-ToDo/static/js/main.cdb7bc65.js.map"
+    "main.f447d609.css.map": "/Sword-ToDo/static/css/main.f447d609.css.map",
+    "main.2bc807a5.js.map": "/Sword-ToDo/static/js/main.2bc807a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.12ff8185.css",
-    "static/js/main.cdb7bc65.js"
+    "static/css/main.f447d609.css",
+    "static/js/main.2bc807a5.js"
   ]
 }
