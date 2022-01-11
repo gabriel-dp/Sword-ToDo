@@ -83,6 +83,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                 onChange={handleTextDescriptionChange}
                 className='task-description'
                 type="text"
+                placeholder='Description'
             />
             <StartEndDate
                 taskName={taskName}

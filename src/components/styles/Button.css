@@ -11,6 +11,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
+    font-family: 'HemiHead';
 }
 
 .button:hover {

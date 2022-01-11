@@ -2,8 +2,9 @@
     width: 100%;
     height: 40px;
     color:white;
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bold;
     overflow: hidden; 
     text-overflow: ellipsis;
+    font-family: 'HemiHead';
 }

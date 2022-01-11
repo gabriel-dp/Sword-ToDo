@@ -6,13 +6,14 @@
 
 .add-task-input {
     height: 40px;
-    padding: 0 10px;
+    padding: 0 15px;
     border-radius: 5px;
     border: none;
     flex: 2;
     background-color: #444;
     font-size: 16px;
     color:white;
+    font-family: 'OpenSans';
 }
 
 .add-task-input:focus {

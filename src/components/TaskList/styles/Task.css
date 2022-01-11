@@ -24,6 +24,8 @@
     overflow: hidden; 
     text-overflow: ellipsis;
     user-select: none;
+    font-family: 'OpenSans';
+    font-size: 14px;
 }
 
 .buttons-container {

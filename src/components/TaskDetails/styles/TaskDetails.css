@@ -2,11 +2,12 @@
     background-color: #222;
     color: white;
     border: none;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     width: 100%;
     overflow: hidden; 
     text-overflow: ellipsis;
+    font-family: 'HemiHead';
 }
 
 .task-title-input:focus {
@@ -52,7 +53,7 @@ textarea {
     width: 100%;
     min-height: 100px;
     resize: none;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'RobotoMono';
 }
 
 textarea:focus {
