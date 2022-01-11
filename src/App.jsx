@@ -32,8 +32,6 @@ const App = () => {
 	const handleTaskAddition = (taskTitle) => {
 		const titleFixed = ((taskTitle).replace(/\s+/g, ' ')).trim() //remove extra spaces
 
-		console.log(titleFixed);
-
 		if (titleFixed !== '') {
 			let isRepeated = false;
 			tasks.map(task => {
