@@ -99,6 +99,17 @@ const App = () => {
 		setTasks(newTasks);
 	}
 
+	const handleChangeTitle = (taskTitle, newTaskTitle) => {
+		const newTasks = tasks.map(task => {
+			if (task.title === taskTitle) {
+				return { ...task, title: newTaskTitle};
+			}
+			return task;
+		});
+
+		setTasks(newTasks);
+	}
+
 	const handleChangeDates = (taskTitle, startDate, endDate) => {
 		const newTasks = tasks.map(task => {
 			if (task.title === taskTitle) return { ...task, startDate: startDate, endDate: endDate};
@@ -130,9 +141,10 @@ const App = () => {
 						path="/:taskTitle" exact element={
 							<TaskDetails
 								tasks={tasks}
+								handleChangeTitle={handleChangeTitle}
 								handleTaskDelete={handleTaskDelete}
-								handleChangeDescription={handleChangeDescription}
 								handleChangeColor={handleChangeColor}
+								handleChangeDescription={handleChangeDescription}
 								handleChangeDates={handleChangeDates}
 							/>
 						}

@@ -1,3 +1,18 @@
+.task-title-input {
+    background-color: #222;
+    color: white;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+    width: 100%;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+.task-title-input:focus {
+    outline: none
+}
+
 .task-configs-container {
     display: flex;
     flex-direction: row;

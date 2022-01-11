@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 import { FaTrash } from 'react-icons/fa';
@@ -10,16 +10,17 @@ import StartEndDate from './StartEndDate';
 
 import './styles/TaskDetails.css';
 
-const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete, handleChangeDates}) => {
+const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete, handleChangeDates, handleChangeTitle}) => {
     //gets the name of the task to be edited
     const params = useParams();
     const taskName = params.taskTitle;
 
     //gets the task data with the name
-    let description, color, initialStartDate, initialEndDate = '';
+    let title, description, color, initialStartDate, initialEndDate = '';
     let completed = false;
     tasks.map(task => {
         if (task.title === taskName) {
+            title = task.title;
             description = task.description;
             color = task.color;
             completed = task.completed;
@@ -27,13 +28,28 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
             initialEndDate = task.endDate;
         }
     });
+
+    //changes task title
+    const firstUpdate = useRef(true);
+    const [newTaskTitle, setNewTaskTitle] = useState(taskName)
+    useEffect(() => {
+        if (firstUpdate.current) {
+            firstUpdate.current = false;
+            return;
+        }
+        handleChangeTitle(title, newTaskTitle);
+        navigate(`/${newTaskTitle}`)
+    }, [newTaskTitle]);
+    const handleInputTitleChange = (e) => {
+        if (e.target.value !== '') setNewTaskTitle(e.target.value);
+    }
     
     //changes task description
     const [inputData, setInputData] = useState(description);
     useEffect(() => {
         handleChangeDescription(taskName, inputData);
     }, [inputData]);
-    const handleInputChange = (e) => {
+    const handleTextDescriptionChange = (e) => {
         setInputData(e.target.value);
     }
     
@@ -50,7 +66,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
 
     return ( 
         <>
-            <Header text={taskName}/>
+            <input className='task-title-input' type='text' value={newTaskTitle} onChange={handleInputTitleChange}/>
             <div className="task-configs-container">
                 <ColorSelector 
                     selected={color}
@@ -64,7 +80,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
             </div>
             <TextareaAutosize 
                 value={inputData}
-                onChange={handleInputChange}
+                onChange={handleTextDescriptionChange}
                 className='task-description'
                 type="text"
             />
