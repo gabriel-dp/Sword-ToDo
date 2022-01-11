@@ -12,7 +12,11 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	//navigates to the task description
 	const navigate = useNavigate();
 	const handleTaskDetailsClick = () => {
-		if (allowClick) navigate(`/${task.title}`);
+		if (allowClick) {
+			let urlFixed = '/' + (task.title).replace(/[\s]/g, '_');
+			console.log(urlFixed);
+			navigate(urlFixed);
+		}
 	}
 	
 	//controls task draggable

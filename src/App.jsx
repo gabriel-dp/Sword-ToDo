@@ -30,16 +30,20 @@ const App = () => {
 	}
 
 	const handleTaskAddition = (taskTitle) => {
-		if (taskTitle !== '') {
+		let titleFixed = taskTitle.trim() //remove extra spaces
+
+		console.log(titleFixed);
+
+		if (titleFixed !== '') {
 			let isRepeated = false;
 			tasks.map(task => {
-				if (task.title === taskTitle) {
+				if (task.title === titleFixed) {
 					isRepeated = true;
 				}
 			});
 
 			const newTasks = [...tasks, {
-				title: taskTitle,
+				title: titleFixed,
 				id:	uuidv4(),
 				completed: false,
 				description: '',

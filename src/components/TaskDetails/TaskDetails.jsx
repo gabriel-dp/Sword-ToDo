@@ -13,7 +13,7 @@ import './styles/TaskDetails.css';
 const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete, handleChangeDates, handleChangeTitle}) => {
     //gets the name of the task to be edited
     const params = useParams();
-    const taskName = params.taskTitle;
+    const taskName = (params.taskTitle).replace(/[_]/g, ' ');
 
     //gets the task data with the name
     let title, description, color, initialStartDate, initialEndDate = '';
@@ -38,10 +38,10 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
             return;
         }
         handleChangeTitle(title, newTaskTitle);
-        navigate(`/${newTaskTitle}`)
+        navigate(`/${(newTaskTitle).replace(/[\s]/g, '_')}`)
     }, [newTaskTitle]);
     const handleInputTitleChange = (e) => {
-        if (e.target.value !== '') setNewTaskTitle(e.target.value);
+        if (e.target.value !== '') setNewTaskTitle(((e.target.value).replace(/[^a-zA-Z\d-+!$()" "]/, '')).replace(/\s\s/g,' '));
     }
     
     //changes task description
@@ -50,7 +50,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
         handleChangeDescription(taskName, inputData);
     }, [inputData]);
     const handleTextDescriptionChange = (e) => {
-        setInputData(e.target.value);
+        setInputData(e.target.value); //remove broken chars and extra spaces
     }
     
     //changes the selected color

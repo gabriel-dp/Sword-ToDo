@@ -5,7 +5,7 @@ import { FaCalendar } from 'react-icons/fa';
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles/StartEndDate.css";
 
-const StartEndDate = ({taskName, handleChangeDates, initialStartDate, initialEndDate}) => {
+const StartEndDate = ({taskName, handleChangeDates, initialStartDate = '', initialEndDate = ''}) => {
     //initializes states of dates and datepickers
     const [startDate, setStartDate] = useState(initialStartDate);
     const [endDate, setEndDate] = useState(initialEndDate);

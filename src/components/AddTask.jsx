@@ -8,7 +8,7 @@ const AddTask = ({handleTaskAddition}) => {
     const [inputData, setInputData] = useState('');
 
     const handleInputChange = (e) => {
-        setInputData(e.target.value);
+        setInputData((e.target.value).replace(/[^a-zA-Z\d-+!$()" "]/, ''));
     }
 
     //subimits the input data

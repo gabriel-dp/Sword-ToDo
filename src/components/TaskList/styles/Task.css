@@ -16,7 +16,11 @@
     background-color: #555;
 }
 
-.task-title-container p {
+.task-title {
+    width: 80%;
+}
+
+.task-title p {
     overflow: hidden; 
     text-overflow: ellipsis;
     user-select: none;
