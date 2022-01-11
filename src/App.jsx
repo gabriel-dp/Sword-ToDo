@@ -4,8 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import AddTask from './components/AddTask';
-import TaskList  from './components/TaskList';
-import TaskDetails from './components/TaskDetails';
+import TaskList  from './components/TaskList/TaskList';
+import TaskDetails from './components/TaskDetails/TaskDetails';
 
 import './App.css';
 

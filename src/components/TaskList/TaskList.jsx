@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Task from './Task.jsx'
+import Task from './Task';
 
 const TaskList = ({tasks, handleChangeComplete, handleChangeOrder}) => {
     if(tasks) {

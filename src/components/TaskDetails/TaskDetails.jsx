@@ -3,10 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 import { FaTrash } from 'react-icons/fa';
 
-import Header from './Header.jsx';
-import ColorSelector from './ColorSelector.jsx';
-import Button from './Button.jsx';
-import StartEndDate from './StartEndDate.jsx';
+import Header from '../Header';
+import ColorSelector from './ColorSelector';
+import Button from '../Button';
+import StartEndDate from './StartEndDate';
 
 import './styles/TaskDetails.css';
 
