@@ -54,6 +54,7 @@ textarea {
     min-height: 100px;
     resize: none;
     font-family: 'RobotoMono';
+    font-size: 13px;
 }
 
 textarea:focus {
