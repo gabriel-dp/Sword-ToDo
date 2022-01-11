@@ -7,7 +7,6 @@
 .date-container {
     width: 100%;
     height: 60px;
-    margin-bottom: 10px;
 }
 
 .date-container p {
@@ -52,4 +51,35 @@
 
 .date-container input:focus {
     outline: #ddd solid 1px;
+}
+
+@media (max-device-width: 500px) {
+    .calendar-container {
+        margin-bottom: 80px;
+    }
+
+    .date-container {
+        height: 120px;
+    }
+
+    .date-container p {
+        font-size: 40px;
+    }
+
+    .date-selector {
+        margin-top: 20px;
+        height: 60px;
+        border-radius: 30px;
+        padding: 0 30px;
+    }
+
+    .calendar-icon {
+        font-size: 28px;
+    }
+
+    .date-selector input {
+        width: 260px;
+        font-size: 30px;
+        padding-bottom: 6px;
+    }
 }

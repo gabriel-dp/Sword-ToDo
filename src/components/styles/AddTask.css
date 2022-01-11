@@ -9,7 +9,7 @@
     padding: 0 15px;
     border-radius: 5px;
     border: none;
-    flex: 2;
+    flex: 3;
     background-color: #444;
     font-size: 16px;
     color:white;
@@ -23,4 +23,27 @@
 .add-task-button-container {
     margin-left: 10px;
     flex: 1;
+}
+
+@media (max-device-width: 500px)  {
+    .add-task-container {
+        margin: 40px 0;
+        width: 100%;
+        display: flex;
+    }
+
+    .add-task-input {
+        height: 80px;
+        padding: 0 30px;
+        border-radius: 10px;
+        font-size: 40px;
+    }
+
+    .add-task-input:focus {
+        outline: #ddd solid 2px;
+    }
+    
+    .add-task-button-container {
+        margin-left: 20px;
+    }
 }

@@ -7,3 +7,10 @@
     text-overflow: ellipsis;
     font-family: 'HemiHead';
 }
+
+@media (max-device-width: 500px) {
+    .header-container {
+        height: 5rem;
+        font-size: 5rem;
+    }
+}

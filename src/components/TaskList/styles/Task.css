@@ -54,3 +54,25 @@
 .complete-task-button:hover {
     color:white
 }
+
+@media (max-device-width: 500px) {
+    .task-container {
+        margin: 16px 0;
+        padding: 30px 40px;
+        border-radius: 10px;
+    }
+
+    .task-title p {
+        font-size: 35px;
+    }
+
+    .description-icon {
+        font-size: 30px;
+        margin: 0 14px;
+    }
+
+    .complete-task-button {
+        font-size: 30px;
+        margin: 0 10px;
+    }
+}

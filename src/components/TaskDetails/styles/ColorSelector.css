@@ -31,3 +31,17 @@
 .circle-fade:hover {
     background-color: transparent;
 }
+
+@media (max-device-width: 500px) {
+    .color-selector {
+        height: 40px;
+        margin: 20px 0;
+    }
+
+    .color-circle {
+        height: 40px;
+        width: 40px;
+        margin-right: 10px;
+        font-size: 34px;
+    }
+}

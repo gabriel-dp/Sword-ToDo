@@ -45,8 +45,7 @@ textarea {
     background-color: #444;
     border-radius: 10px;
     border: none;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin: 15px 0;
     color:ghostwhite;
     border: none;
     width: 100%;
@@ -62,4 +61,27 @@ textarea:focus {
 
 .back-button-container {
     max-width: 50%;
+}
+
+@media (max-device-width: 500px) {
+    .task-title-input {
+        font-size: 70px;
+    }
+
+    .delete-task-button {
+        font-size: 36px;
+        margin: 0 10px;
+    }
+
+    textarea {
+        padding: 30px 40px;
+        border-radius: 20px;
+        margin: 30px 0;
+        min-height: 200px;
+        font-size: 26px;
+    }
+
+    textarea:focus {
+        outline: #ddd solid 2px;
+    }
 }

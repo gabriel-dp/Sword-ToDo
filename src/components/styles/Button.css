@@ -18,3 +18,12 @@
     background-color: #444;
     color: aquamarine;
 }
+
+@media (max-device-width: 500px) {
+    .button {
+        height: 80px;
+        padding: 0 20px;
+        border-radius: 10px;
+        font-size: 32px;
+    }
+}

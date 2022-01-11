@@ -14,7 +14,6 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	const handleTaskDetailsClick = () => {
 		if (allowClick) {
 			let urlFixed = '/' + (task.title).replace(/[\s]/g, '_');
-			console.log(urlFixed);
 			navigate(urlFixed);
 		}
 	}
