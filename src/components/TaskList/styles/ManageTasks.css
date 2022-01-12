@@ -33,6 +33,7 @@
 #import-file {
     font-size: 20px;
     padding-bottom: 2px;
+    margin-right: 3px;
 }
 
 #save-tasks {
@@ -58,6 +59,12 @@
     .manage-button {
         font-size: 55px;
         padding: 0 20px;
+    }
+
+    #import-file {
+        font-size: 50px;
+        padding-bottom: 4px;
+        margin-right: 6px;
     }
 
     #save-tasks {
