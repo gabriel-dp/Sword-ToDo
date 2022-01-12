@@ -122,14 +122,18 @@ const App = () => {
 	}
 
 	const handleImportTasks = (importedTasks) => {
-		const newTasks = importedTasks.map(task => {
-			let repeated = [];
+		let newTasks = importedTasks.map(task => {
+			let repeated = false;
 			tasks.map(oldTask => {
-				if (task.title === oldTask.title) repeated = oldTask;
+				if (task.title === oldTask.title) repeated = true;
 			})
-			if (repeated !== []) return task;
-			return repeated;
+			if (!repeated) return task;
 		})
+
+		//deletes undefined elements on array of newTasks
+		newTasks = newTasks.filter(function(element) {
+			return element !== undefined;
+		});
 
 		setTasks(tasks.concat(newTasks));
 	}

@@ -17,20 +17,24 @@ const ImportExport = ({tasks, handleImportTasks}) => {
     const onFileChange = event => {
         const rawFile = event.target.files[0];
 
-        const fileReader = new FileReader();
-        fileReader.readAsText(rawFile, "UTF-8");
-        fileReader.onload = e => {
-            setUploadedFile(e.target.result);
+        if (rawFile.type === 'application/json') {
+            const fileReader = new FileReader();
+            fileReader.readAsText(rawFile, "UTF-8");
+            fileReader.onload = e => {
+                setUploadedFile(e.target.result);
+            }
         }
     }
 
     const FileExport = () => {
-        const fileData = JSON.stringify(tasks);
-        const url= URL.createObjectURL(new Blob([fileData], {type: "text/plain"}));
-        const link = document.createElement('a');
-        link.download = 'filename.json';
-        link.href = url;
-        link.click();
+        if (tasks.length !== 0) {
+            const fileData = JSON.stringify(tasks);
+            const url= URL.createObjectURL(new Blob([fileData], {type: "text/plain"}));
+            const link = document.createElement('a');
+            link.download = 'filename.json';
+            link.href = url;
+            link.click();
+        }
     }
 
     return (
