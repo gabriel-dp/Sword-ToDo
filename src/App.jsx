@@ -121,6 +121,19 @@ const App = () => {
 		setTasks(newTasks);
 	}
 
+	const handleImportTasks = (importedTasks) => {
+		const newTasks = importedTasks.map(task => {
+			let repeated = [];
+			tasks.map(oldTask => {
+				if (task.title === oldTask.title) repeated = oldTask;
+			})
+			if (repeated !== []) return task;
+			return repeated;
+		})
+
+		setTasks(tasks.concat(newTasks));
+	}
+
 	return (
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<div className='container'>
@@ -135,6 +148,7 @@ const App = () => {
 									tasks={tasks} 
 									handleChangeComplete={handleChangeComplete} 
 									handleChangeOrder={handleChangeOrder}
+									handleImportTasks={handleImportTasks}
 								/>
 							</>
 						} 

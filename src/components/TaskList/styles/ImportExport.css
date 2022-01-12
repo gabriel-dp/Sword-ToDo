@@ -1,0 +1,24 @@
+.manage-container {
+    width: 100%;
+    height: 30px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.manage-button {
+    background-color: #222;
+    color: aquamarine;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.manage-button:focus {
+    outline: none;
+}
+
+.manage-container input[type='file'] {
+    display: none;
+}
