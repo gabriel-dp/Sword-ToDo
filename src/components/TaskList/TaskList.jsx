@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Task from './Task';
-import ImportExport from './ImportExport'
+import ManageTasks from './ManageTasks'
 
 const TaskList = ({tasks, handleChangeComplete, handleChangeOrder, handleImportTasks}) => {
     return (
@@ -17,7 +17,7 @@ const TaskList = ({tasks, handleChangeComplete, handleChangeOrder, handleImportT
                     />
                 ))
             }
-            <ImportExport
+            <ManageTasks
                 tasks={tasks}
                 handleImportTasks={handleImportTasks}
             />
