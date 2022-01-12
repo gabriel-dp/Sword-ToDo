@@ -1,3 +1,9 @@
+.divisor {
+    border: none;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+}
+
 .manage-container {
     width: 100%;
     height: 30px;
@@ -23,13 +29,17 @@
     display: none;
 }
 
-.divisor {
-    border: none;
-    border-top: 1px solid #444;
-    margin-top: 30px;
+#save-tasks {
+    font-size: 23px;
+    transition: all 0.5s ease;
 }
 
 @media (max-device-width: 500px) {
+    .divisor {
+        border-top: 2px solid #444;
+        margin-top: 60px;
+    }
+
     .manage-container {
         height: 60px;
         margin-top: 120px;
@@ -39,5 +49,9 @@
     .manage-button {
         font-size: 55px;
         padding: 0 15px;
+    }
+
+    #save-tasks {
+        font-size: 60px;
     }
 }

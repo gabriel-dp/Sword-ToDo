@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaFileDownload, FaFileUpload } from 'react-icons/fa'
+import { FaFileImport, FaSave } from 'react-icons/fa'
 
 import "./styles/ManageTasks.css"
 
@@ -31,7 +31,7 @@ const ImportExport = ({tasks, handleImportTasks}) => {
             const fileData = JSON.stringify(tasks);
             const url= URL.createObjectURL(new Blob([fileData], {type: "text/plain"}));
             const link = document.createElement('a');
-            link.download = 'filename.json';
+            link.download = 'sword-tasks.json';
             link.href = url;
             link.click();
         }
@@ -43,10 +43,10 @@ const ImportExport = ({tasks, handleImportTasks}) => {
             <div className='manage-container'>
                 <label htmlFor='file-upload' className='manage-button'>
                     <input id='file-upload' type='file' onChange={onFileChange}/>
-                    <FaFileDownload/>
+                    <FaFileImport/>
                 </label>
-                <button className='manage-button' onClick={FileExport}>
-                    <FaFileUpload/>
+                <button className='manage-button' id='save-tasks' onClick={FileExport} style={(tasks.length == 0) ? {color:'#444'} : {color:'aquamarine'}}>
+                    <FaSave/>
                 </button>
             </div>
         </>
