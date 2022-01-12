@@ -38,6 +38,7 @@ const App = () => {
 				if (task.title === titleFixed) {
 					isRepeated = true;
 				}
+				return 0;
 			});
 
 			const newTasks = [...tasks, {
@@ -126,8 +127,10 @@ const App = () => {
 			let repeated = false;
 			tasks.map(oldTask => {
 				if (task.title === oldTask.title) repeated = true;
+				return 0;
 			})
 			if (!repeated) return task;
+			return undefined;
 		})
 
 		//deletes undefined elements on array of newTasks
@@ -136,6 +139,10 @@ const App = () => {
 		});
 
 		setTasks(tasks.concat(newTasks));
+	}
+
+	const handleDeleteAll = () => {
+		setTasks([]);
 	}
 
 	return (
@@ -153,6 +160,7 @@ const App = () => {
 									handleChangeComplete={handleChangeComplete} 
 									handleChangeOrder={handleChangeOrder}
 									handleImportTasks={handleImportTasks}
+									handleDeleteAll={handleDeleteAll}
 								/>
 							</>
 						} 

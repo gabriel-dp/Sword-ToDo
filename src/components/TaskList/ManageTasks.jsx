@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { FaFileImport, FaSave } from 'react-icons/fa'
+import { BsFileEarmarkArrowDownFill } from 'react-icons/bs';
+import { MdSave, MdDeleteSweep } from 'react-icons/md';
 
 import "./styles/ManageTasks.css"
 
-const ImportExport = ({tasks, handleImportTasks}) => {
+const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll}) => {
 
     const [uploadedFile, setUploadedFile] = useState(null);
 
     useEffect(() => {
-        if (uploadedFile != null) {
+        if (uploadedFile !== null) {
             handleImportTasks(JSON.parse(uploadedFile));
         }
-    }, [uploadedFile])
+    }, [uploadedFile, handleImportTasks])
 
     //uploads a json file with
     const onFileChange = event => {
@@ -27,7 +28,7 @@ const ImportExport = ({tasks, handleImportTasks}) => {
     }
 
     const FileExport = () => {
-        if (tasks.length != 0) {
+        if (tasks.length !== 0) {
             const fileData = JSON.stringify(tasks);
             const url= URL.createObjectURL(new Blob([fileData], {type: "text/plain"}));
             const link = document.createElement('a');
@@ -41,16 +42,19 @@ const ImportExport = ({tasks, handleImportTasks}) => {
         <>
             <hr className='divisor'/>
             <div className='manage-container'>
-                <label htmlFor='file-upload' className='manage-button'>
+                <label htmlFor='file-upload' className='manage-button' id='import-file'>
                     <input id='file-upload' type='file' onChange={onFileChange}/>
-                    <FaFileImport/>
+                    <BsFileEarmarkArrowDownFill/>
                 </label>
-                <button className='manage-button' id='save-tasks' onClick={FileExport} style={(tasks.length == 0) ? {color:'#444'} : {color:'aquamarine'}}>
-                    <FaSave/>
+                <button className='manage-button' id='save-tasks' onClick={FileExport} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
+                    <MdSave/>
+                </button>
+                <button className='manage-button' id='delete-all' onClick={handleDeleteAll} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
+                    <MdDeleteSweep/>
                 </button>
             </div>
         </>
     );
 }
  
-export default ImportExport;
+export default ManageTasks;

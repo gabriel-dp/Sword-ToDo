@@ -17,7 +17,7 @@ const ColorSelector = ({selected, handleClickColor}) => {
                         onClick={()=>handleClickColor(color)}
                     >
                         {
-                            (selected == color ? <BiCheck/> : <div className="circle-fade"/>)
+                            (selected === color ? <BiCheck/> : <div className="circle-fade"/>)
                         }
                     </div>
                 ))

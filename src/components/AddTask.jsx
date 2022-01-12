@@ -19,7 +19,7 @@ const AddTask = ({handleTaskAddition}) => {
 
     //submits task with the Enter key
     const handleKeypress = e => {
-        if (e.key == 'Enter') handleAddTaskClick();
+        if (e.key === 'Enter') handleAddTaskClick();
     };
 
     return (

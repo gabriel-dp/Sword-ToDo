@@ -3,7 +3,7 @@ import React from 'react';
 import Task from './Task';
 import ManageTasks from './ManageTasks'
 
-const TaskList = ({tasks, handleChangeComplete, handleChangeOrder, handleImportTasks}) => {
+const TaskList = ({tasks, handleChangeComplete, handleChangeOrder, handleImportTasks, handleDeleteAll}) => {
     return (
         <>
             {
@@ -20,6 +20,7 @@ const TaskList = ({tasks, handleChangeComplete, handleChangeOrder, handleImportT
             <ManageTasks
                 tasks={tasks}
                 handleImportTasks={handleImportTasks}
+                handleDeleteAll={handleDeleteAll}
             />
         </>
     );

@@ -10,13 +10,14 @@
     margin-top: 35px;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
 }
 
 .manage-button {
     background-color: #222;
     color: aquamarine;
     border: none;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
     padding: 0 7px;
 }
@@ -29,9 +30,17 @@
     display: none;
 }
 
+#import-file {
+    font-size: 20px;
+    padding-bottom: 2px;
+}
+
 #save-tasks {
-    font-size: 23px;
-    transition: all 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+#delete-all {
+    transition: color 0.5s ease;
 }
 
 @media (max-device-width: 500px) {
@@ -48,10 +57,14 @@
 
     .manage-button {
         font-size: 55px;
-        padding: 0 15px;
+        padding: 0 20px;
     }
 
     #save-tasks {
         font-size: 60px;
+    }
+
+    #delete-all {
+        font-size: 70px;
     }
 }
