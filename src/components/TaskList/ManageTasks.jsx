@@ -12,19 +12,22 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll}) => {
         if (uploadedFile !== null) {
             handleImportTasks(JSON.parse(uploadedFile));
         }
-    }, [uploadedFile, handleImportTasks])
-
+    }, [uploadedFile])
+    
     //uploads a json file with
     const onFileChange = event => {
         const rawFile = event.target.files[0];
-
+        
         if (rawFile.type === 'application/json') {
             const fileReader = new FileReader();
             fileReader.readAsText(rawFile, "UTF-8");
             fileReader.onload = e => {
                 setUploadedFile(e.target.result);
+                setUploadedFile(null);
             }
         }
+        
+        document.getElementById('file-upload').value = null;
     }
 
     const FileExport = () => {
