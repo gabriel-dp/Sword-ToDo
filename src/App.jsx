@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header';
-import AddTask from './components/AddTask';
 import TaskList  from './components/TaskList/TaskList';
 import TaskDetails from './components/TaskDetails/TaskDetails';
 
@@ -153,10 +151,9 @@ const App = () => {
 						path="/" exact 
 						element={
 							<>
-								<Header text="Sword-ToDo"/>
-								<AddTask handleTaskAddition={handleTaskAddition}/>
 								<TaskList 
 									tasks={tasks} 
+									handleTaskAddition={handleTaskAddition}
 									handleChangeComplete={handleChangeComplete} 
 									handleChangeOrder={handleChangeOrder}
 									handleImportTasks={handleImportTasks}
