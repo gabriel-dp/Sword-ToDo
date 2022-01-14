@@ -1,13 +1,13 @@
 import React from 'react';
 
-import './Button.css';
+import { Button } from './styles';
 
-const Button = ({children, onClick}) => {
+const MainButton = ({children, onClick}) => {
     return (
-        <button className="button" onClick={onClick}>
+        <Button onClick={onClick}>
             {children}
-        </button>
+        </Button>
     );
 }
  
-export default Button;
+export default MainButton;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BsFileEarmarkArrowDownFill } from 'react-icons/bs';
 import { MdSave, MdDeleteSweep } from 'react-icons/md';
 
-import "./styles/ManageTasks.css"
+import { Divisor, ManageContainer, ManageButton } from "./styles";
 
 const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll}) => {
 
@@ -43,19 +43,21 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll}) => {
 
     return (
         <>
-            <hr className='divisor'/>
-            <div className='manage-container'>
-                <label htmlFor='file-upload' className='manage-button' id='import-file'>
-                    <input id='file-upload' type='file' onChange={onFileChange}/>
-                    <BsFileEarmarkArrowDownFill/>
-                </label>
-                <button className='manage-button' id='save-tasks' onClick={FileExport} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
+            <Divisor/>
+            <ManageContainer>
+                <ManageButton className='importFile'>
+                    <label htmlFor='file-upload'>
+                        <input id='file-upload' type='file' onChange={onFileChange}/>
+                        <BsFileEarmarkArrowDownFill/>
+                    </label>
+                </ManageButton>
+                <ManageButton className='saveTasks' onClick={FileExport} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
                     <MdSave/>
-                </button>
-                <button className='manage-button' id='delete-all' onClick={handleDeleteAll} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
+                </ManageButton>
+                <ManageButton className='deleteAll' onClick={handleDeleteAll} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
                     <MdDeleteSweep/>
-                </button>
-            </div>
+                </ManageButton>
+            </ManageContainer>
         </>
     );
 }

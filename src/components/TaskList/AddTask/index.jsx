@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import Button from '../Button';
+import MainButton from '../../Button';
 
-import './styles/AddTask.css';
+import { AddTaskContainer, MainInput } from './styles'
 
 const AddTask = ({handleTaskAddition}) => {
     const [inputData, setInputData] = useState('');
@@ -23,20 +23,18 @@ const AddTask = ({handleTaskAddition}) => {
     };
 
     return (
-        <div className='add-task-container'>
-            <input 
+        <AddTaskContainer>
+            <MainInput 
                 onChange={handleInputChange} 
                 onKeyPress={handleKeypress}
                 value={inputData} 
                 className="add-task-input" 
                 type="text"
             />
-            <div className='add-task-button-container'>
-                <Button onClick={handleAddTaskClick}>
-                    Add
-                </Button>
-            </div>
-        </div>
+            <MainButton onClick={handleAddTaskClick}>
+                Add
+            </MainButton>
+        </AddTaskContainer>
     );
 }
  

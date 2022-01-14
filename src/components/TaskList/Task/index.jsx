@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import { FaRegDotCircle, FaRegCircle, FaStream} from 'react-icons/fa';
 
-import './styles/Task.css';
+import { TaskContainer, 
+	TaskTitleContainer,
+	ButtonsContainer, 
+	DescriptionIcon,
+	ToogleCompletedButton } from './styles';
 
 const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	//disable warning
@@ -44,11 +48,10 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 			onMouseDown={handleTouchDown}
 			bounds={index==0 ? {top:0} : {}}
 			allowAnyClick={true}
-			cancel=".complete-task-button"
+			cancel=".toogle-complete-button"
 			nodeRef={nodeRef}
 		>
-			<div 
-				className='task-container' 
+			<TaskContainer
 				onClick={handleTaskDetailsClick}
 				style={task.completed ? 
 					{color:'gray', textDecoration: 'line-through'} : 
@@ -56,21 +59,18 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 				}
 				ref={nodeRef}
 			>
-				<div 
-					className='task-title' 
-					style={task.completed ? {marginLeft: 8} : {}}
-				>
+				<TaskTitleContainer	style={task.completed ? {marginLeft: 8} : {}}>
 					<p>{task.title}</p>
-				</div>
-				<div className="buttons-container">
-					<div className="description-icon">
-						{task.description != '' ? (<FaStream/>) : (<></>)}
-					</div>
-					<button className='complete-task-button' onClick={(event) => {handleChangeComplete(task.id); event.stopPropagation()}}>
-						{task.completed ? (<FaRegDotCircle/>) : (<FaRegCircle/>)}
-					</button>
-				</div>
-			</div>
+				</TaskTitleContainer>
+				<ButtonsContainer>
+					<DescriptionIcon>
+						{(task.description != '') ? <FaStream/> : <></>}
+					</DescriptionIcon>
+					<ToogleCompletedButton className='toogle-complete-button' onClick={(event) => {handleChangeComplete(task.id); event.stopPropagation()}}>
+						{task.completed ? <FaRegDotCircle/> : <FaRegCircle/>}
+					</ToogleCompletedButton>
+				</ButtonsContainer>
+			</TaskContainer>
 		</Draggable>
 	);
 }

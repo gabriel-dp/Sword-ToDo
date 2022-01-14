@@ -1,4 +1,6 @@
-.button {
+import styled from "styled-components";
+
+export const Button = styled.button `
     background-color: aquamarine;
     height: 40px;
     padding: 0 10px;
@@ -12,18 +14,16 @@
     transition: all 0.2s ease;
     user-select: none;
     font-family: 'HemiHead';
-}
 
-.button:hover {
-    background-color: #444;
-    color: aquamarine;
-}
+    :hover {
+        background-color: #444;
+        color: aquamarine;
+    }
 
-@media (max-device-width: 500px) {
-    .button {
+    @media (max-device-width: 500px) {
         height: 80px;
         padding: 0 20px;
         border-radius: 10px;
         font-size: 32px;
     }
-}
+`;
