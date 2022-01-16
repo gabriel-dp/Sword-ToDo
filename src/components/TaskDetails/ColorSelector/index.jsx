@@ -1,28 +1,27 @@
 import React from 'react';
 import { BiCheck } from 'react-icons/bi';
 
-import "./styles/ColorSelector.css";
+import { ColorSelectorContainer, ColorCircle, ColorCircleFade } from './styles'
 
 const ColorSelector = ({selected, handleClickColor}) => {
     const colors = ["#f24e4e", "#f29b4e",  "#f2ea4e", "#5bf24e", "#7fffd4", "#4e5cf2", "#bb4ef2", "#f24edf", "#ffffff"];
 
     return (
-        <div className="color-selector">
+        <ColorSelectorContainer>
             {
                 colors.map((color) => (
-                    <div 
+                    <ColorCircle
                         key={color}
-                        className="color-circle" 
                         style={{backgroundColor: `${color}`}}
                         onClick={()=>handleClickColor(color)}
                     >
                         {
-                            (selected === color ? <BiCheck/> : <div className="circle-fade"/>)
+                            (selected === color ? <BiCheck/> : <ColorCircleFade/>)
                         }
-                    </div>
+                    </ColorCircle>
                 ))
             }
-        </div>
+        </ColorSelectorContainer>
     );
 }
  

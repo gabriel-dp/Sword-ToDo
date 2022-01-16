@@ -3,11 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 import { FaTrash } from 'react-icons/fa';
 
-import ColorSelector from './ColorSelector';
-import Button from '../Button';
-import StartEndDate from './StartEndDate';
+import ColorSelector from '../ColorSelector';
+import Button from '../../Button';
+import StartEndDate from '../StartEndDate';
 
-import './styles/TaskDetails.css';
+import { TaskDetailsContainer, TaskTitle, TaskConfigsContainer, ButtonsContainer, DeleteTaskButton, BackButtonContainer } from './styles';
 
 const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete, handleChangeDates, handleChangeTitle}) => {
     
@@ -17,13 +17,11 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
 
     //gets the task data with the name
     let title, description, color, initialStartDate, initialEndDate = '';
-    let completed = false;
     tasks.map(task => {
         if (task.title === taskName) {
             title = task.title;
             description = task.description;
             color = task.color;
-            completed = task.completed;
             initialStartDate = task.startDate;
             initialEndDate = task.endDate;
         }
@@ -65,19 +63,19 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
     }
 
     return ( 
-        <>
-            <input className='task-title-input' type='text' value={newTaskTitle} onChange={handleInputTitleChange}/>
-            <div className="task-configs-container">
+        <TaskDetailsContainer>
+            <TaskTitle type='text' value={newTaskTitle} onChange={handleInputTitleChange}/>
+            <TaskConfigsContainer>
                 <ColorSelector 
                     selected={color}
                     handleClickColor={handleClickColor}
                 />
-                <div className="buttons-container">
-                    <button className='delete-task-button' onClick={() => {handleTaskDelete(taskName); backToHome();}}>
+                <ButtonsContainer>
+                    <DeleteTaskButton onClick={() => {handleTaskDelete(taskName); backToHome();}}>
                         <FaTrash/>
-                    </button>
-                </div>
-            </div>
+                    </DeleteTaskButton>
+                </ButtonsContainer>
+            </TaskConfigsContainer>
             <TextareaAutosize 
                 value={inputData}
                 onChange={handleTextDescriptionChange}
@@ -91,10 +89,10 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                 initialStartDate={initialStartDate}
                 initialEndDate={initialEndDate}
             />
-            <div className="back-button-container">
+            <BackButtonContainer>
                 <Button onClick={backToHome}>Back</Button>
-            </div>
-        </>
+            </BackButtonContainer>
+        </TaskDetailsContainer>
     );
 }
  
