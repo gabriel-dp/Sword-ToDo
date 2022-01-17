@@ -46,7 +46,7 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 			onDrag={handleDrag}
 			onStop={handleStopDrag}
 			onMouseDown={handleTouchDown}
-			bounds={index==0 ? {top:0} : {}}
+			bounds={index === 0 ? {top:0} : {}}
 			allowAnyClick={true}
 			cancel=".toogle-complete-button"
 			nodeRef={nodeRef}
@@ -62,7 +62,7 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 				</TaskTitleContainer>
 				<ButtonsContainer>
 					<DescriptionIcon>
-						{(task.description != '') ? <FaStream/> : <></>}
+						{(task.description !== '') ? <FaStream/> : <></>}
 					</DescriptionIcon>
 					<ToogleCompletedButton className='toogle-complete-button' onClick={(event) => {handleChangeComplete(task.id); event.stopPropagation()}}>
 						{task.completed ? <FaRegDotCircle/> : <FaRegCircle/>}

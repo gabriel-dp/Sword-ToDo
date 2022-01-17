@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import usePersistedState from './utils/usePersistedState';

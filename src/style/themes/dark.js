@@ -1,4 +1,4 @@
-export default {
+const DarkTheme = {
     title: 'dark',
     colors: {
         primary: '#7feeff',
@@ -12,3 +12,5 @@ export default {
         gray: '#808080',
     },
 };
+
+export default DarkTheme

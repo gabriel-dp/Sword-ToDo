@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import TextareaAutosize from 'react-textarea-autosize';
 import { FaTrash } from 'react-icons/fa';
 
 import ColorSelector from '../ColorSelector';
+import AutosizedTextarea from '../AutosizedTextarea';
 import Button from '../../Button';
 import StartEndDate from '../StartEndDate';
 
-import { TaskDetailsContainer, TaskTitle, TaskConfigsContainer, ButtonsContainer, DeleteTaskButton, BackButtonContainer } from './styles';
+import { TaskTitle, TaskConfigsContainer, ButtonsContainer, DeleteTaskButton, BackButtonContainer } from './styles';
 
-const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleChangeComplete, handleTaskDelete, handleChangeDates, handleChangeTitle}) => {
+const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleTaskDelete, handleChangeDates, handleChangeTitle}) => {
     
     //gets the name of the task to be edited
     const params = useParams();
     const taskName = (params.taskTitle).replace(/[_]/g, ' ');
 
     //gets the task data with the name
-    let title, description, color, initialStartDate, initialEndDate = '';
+    var title, description, color, initialStartDate, initialEndDate = '';
     tasks.map(task => {
         if (task.title === taskName) {
             title = task.title;
@@ -42,15 +42,6 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
         if (e.target.value !== '') setNewTaskTitle(((e.target.value).replace(/[^a-zA-Z\d-+!$()" "]/, '')).replace(/\s\s/g,' '));
     }
     
-    //changes task description
-    const [inputData, setInputData] = useState(description);
-    useEffect(() => {
-        handleChangeDescription(taskName, inputData);
-    }, [inputData]);
-    const handleTextDescriptionChange = (e) => {
-        setInputData(e.target.value); //remove broken chars and extra spaces
-    }
-    
     //changes the selected color
     const handleClickColor = (color) => {
         handleChangeColor(taskName, color);
@@ -63,7 +54,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
     }
 
     return ( 
-        <TaskDetailsContainer>
+        <>
             <TaskTitle type='text' value={newTaskTitle} onChange={handleInputTitleChange}/>
             <TaskConfigsContainer>
                 <ColorSelector 
@@ -76,12 +67,10 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
                     </DeleteTaskButton>
                 </ButtonsContainer>
             </TaskConfigsContainer>
-            <TextareaAutosize 
-                value={inputData}
-                onChange={handleTextDescriptionChange}
-                className='task-description'
-                type="text"
-                placeholder='Description'
+            <AutosizedTextarea
+                taskTitle={title}
+                description={description}
+                handleChangeDescription={handleChangeDescription}
             />
             <StartEndDate
                 taskName={taskName}
@@ -92,7 +81,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleC
             <BackButtonContainer>
                 <Button onClick={backToHome}>Back</Button>
             </BackButtonContainer>
-        </TaskDetailsContainer>
+        </>
     );
 }
  
