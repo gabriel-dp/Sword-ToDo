@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const HeaderDiv = styled.div`
     width: 100%;
     height: 30px;
-    color:white;
+    color: ${props => props.theme.colors.text};
     font-size: 30px;
     overflow: hidden; 
     text-overflow: ellipsis;

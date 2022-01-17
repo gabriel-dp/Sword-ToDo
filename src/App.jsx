@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Switch from 'react-switch';
+
+import { ThemeProvider } from 'styled-components'; 
+import GlobalStyle from './style/global';
+import light from './style/themes/light';
+import dark from './style/themes/dark';
 
 import TaskList  from './components/TaskList/TaskList';
 import TaskDetails from './components/TaskDetails/TaskDetails';
-
-import './App.css';
 
 const App = () => {
 	//get previous data from local storage
@@ -143,7 +147,14 @@ const App = () => {
 		setTasks([]);
 	}
 
+	const[theme, setTheme] = useState(light);
+	const ToggleTheme = () => {
+		setTheme(theme.title === 'light' ? dark : light);
+	}
+
 	return (
+		<ThemeProvider theme={theme}>
+		<GlobalStyle/>
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<div className='container'>
 				<Routes>
@@ -158,6 +169,10 @@ const App = () => {
 									handleChangeOrder={handleChangeOrder}
 									handleImportTasks={handleImportTasks}
 									handleDeleteAll={handleDeleteAll}
+								/>
+								<Switch
+									onChange={ToggleTheme}
+									checked={theme.title === 'dark'}
 								/>
 							</>
 						} 
@@ -177,6 +192,7 @@ const App = () => {
 				</Routes>
 			</div>
 		</BrowserRouter>
+		</ThemeProvider>
 	);
 }
 

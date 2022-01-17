@@ -16,9 +16,9 @@ export const MainInput = styled.input`
     padding: 0 15px;
     border-radius: 5px;
     border: none;
-    background-color: #444;
+    background-color: ${props => props.theme.colors.element};
     font-size: 16px;
-    color:white;
+    color: ${props => props.theme.colors.text};
     font-family: 'OpenSans';
     margin-right: 10px;
 

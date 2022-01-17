@@ -24,7 +24,7 @@ export const ColorCircle = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 17px;
-    color: #222;
+    color: ${props => props.theme.colors.black};
 
     @media (max-device-width: 500px) {
         height: 40px;
@@ -35,7 +35,8 @@ export const ColorCircle = styled.div`
 `;
 
 export const ColorCircleFade = styled.div`
-    background-color: rgba(0,0,0,0.5);
+    background-color: ${props => props.theme.colors.element};
+    opacity: 15%;
     height: 100%;
     width: 100%;
     border-radius: 50%;
@@ -43,5 +44,6 @@ export const ColorCircleFade = styled.div`
 
     :hover {
         background-color: transparent;
+        border: 2px solid ${props => props.theme.colors.text};
     }
 `;

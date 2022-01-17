@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 export const Button = styled.button `
-    background-color: aquamarine;
+    background-color: ${props => props.theme.colors.primary};
     height: 40px;
     padding: 0 10px;
     border-radius: 5px;
     border: none;
     width: 100%;
     font-size: 16px;
-    color: #444;
+    color: ${ props => props.theme.colors.element };
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -16,8 +16,8 @@ export const Button = styled.button `
     font-family: 'HemiHead';
 
     :hover {
-        background-color: #444;
-        color: aquamarine;
+        background-color: ${ props => props.theme.colors.element };
+        color: ${props => props.theme.colors.primary};
     }
 
     @media (max-device-width: 500px) {

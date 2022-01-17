@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 
 export const TaskContainer = styled.div`
-    background-color: #444;
+    background-color: ${props => props.theme.colors.element};
     margin: 8px 0;
     padding: 15px 20px;
     display: flex;
     border-radius: 5px;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: ${props => props.theme.colors.text};
     cursor: pointer;
     user-select: none;
     transition: background 0.2s ease;
 
     :hover {
-        background-color: #555;
+        background-color: ${props => props.theme.colors.highlight};
     }
 
     @media (max-device-width: 500px) {
@@ -61,7 +61,7 @@ export const DescriptionIcon = styled.div`
 `;
 
 export const ToogleCompletedButton = styled.button`
-    color: aquamarine;
+    color: ${props => props.theme.colors.primary};
     border: none;
     background-color: transparent;
     font-size: 15px;
@@ -69,7 +69,7 @@ export const ToogleCompletedButton = styled.button`
     margin: 0 5px;
 
     :hover {
-        color:white
+        color: ${props => props.theme.colors.text};
     }
 
     @media (max-device-width: 500px) {

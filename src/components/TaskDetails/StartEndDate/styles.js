@@ -16,7 +16,7 @@ export const DateContainer = styled.div`
     height: 60px;
 
     p {
-        color:white;
+        color: ${props => props.theme.colors.text};
         font-size: 17px;
         font-family: 'HemiHead';
     }
@@ -35,7 +35,7 @@ export const DateSelector = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #444;
+    background-color: ${props => props.theme.colors.element};
     margin-top: 5px;
     width: 90%;
     height: 30px;
@@ -44,8 +44,8 @@ export const DateSelector = styled.div`
     user-select: none;  
 
     input {
-        background-color: #444;
-        color: white;
+        background-color: ${props => props.theme.colors.element};
+        color: ${props => props.theme.colors.text};
         width: 130px;
         border: none;
         pointer-events: none;
@@ -74,12 +74,12 @@ export const DateSelector = styled.div`
 `;
 
 export const StyledFaCalendar = styled(FaCalendar)`
-    color: aquamarine;
+    color: ${props => props.theme.colors.primary};
     font-size: 14px;
     cursor: pointer;
     
     :hover {
-        color:white;
+        color: ${props => props.theme.colors.text};
     }
 
     @media (max-device-width: 500px) {

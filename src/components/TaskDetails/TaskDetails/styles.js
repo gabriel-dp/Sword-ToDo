@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const TaskDetailsContainer = styled.div`
     textarea {
         padding: 15px 20px;
-        background-color: #444;
+        background-color: ${props => props.theme.colors.element};
         border-radius: 10px;
         border: none;
         margin: 15px 0;
-        color:ghostwhite;
+        color: ${props => props.theme.colors.text};
         border: none;
         width: 100%;
         min-height: 100px;
@@ -36,8 +36,8 @@ export const TaskDetailsContainer = styled.div`
 `;
 
 export const TaskTitle = styled.input`
-    background-color: #222;
-    color: white;
+    background-color: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
     border: none;
     font-size: 30px;
     width: 100%;
@@ -69,39 +69,20 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const DeleteTaskButton = styled.button`
-    color: aquamarine;
+    color: ${props => props.theme.colors.primary};
     border: none;
-    background-color: #222;
+    background-color: ${props => props.theme.colors.background};
     font-size: 18px;
     cursor: pointer;
     margin: 0 5px;
 
     :hover {
-    color:white
+        color: ${props => props.theme.colors.highlight};
     }
 
     @media (max-device-width: 500px) {
         font-size: 36px;
         margin: 0 10px;
-    }
-`;
-
-export const DescriptionTextArea = styled.textarea`
-    padding: 15px 20px;
-    background-color: #444;
-    border-radius: 10px;
-    border: none;
-    margin: 15px 0;
-    color:ghostwhite;
-    border: none;
-    width: 100%;
-    min-height: 100px;
-    resize: none;
-    font-family: 'RobotoMono';
-    font-size: 13px;
-
-    :focus {
-    outline: #ddd solid 1px;
     }
 `;
 

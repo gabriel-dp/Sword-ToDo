@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Divisor = styled.hr`
     border: none;
-    border-top: 1px solid #444;
+    border-top: 1px solid ${props => props.theme.colors.element};
     margin-top: 30px;
 
     @media (max-device-width: 500px) {
-        border-top: 2px solid #444;
+        border-top: 2px solid ${props => props.theme.colors.element};
         margin-top: 60px;
     }
 `;
@@ -27,8 +27,8 @@ export const ManageContainer = styled.div`
 `;
 
 export const ManageButton = styled.button`
-    background-color: #222;
-    color: aquamarine;
+    background-color: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.primary};
     border: none;
     font-size: 25px;
     cursor: pointer;

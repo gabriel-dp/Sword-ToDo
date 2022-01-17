@@ -54,7 +54,7 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 			<TaskContainer
 				onClick={handleTaskDetailsClick}
 				style={task.completed ? 
-					{color:'gray', textDecoration: 'line-through'} : 
+					{color:'lightgray', textDecoration: 'line-through'} : 
 					{borderLeft: `8px solid ${task.color}`}
 				}
 				ref={nodeRef}
