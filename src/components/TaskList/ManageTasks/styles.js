@@ -26,6 +26,11 @@ export const ManageContainer = styled.div`
     }
 `;
 
+export const ManageBlock = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
 export const ManageButton = styled.button`
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.primary};
@@ -77,5 +82,18 @@ export const ManageButton = styled.button`
         &.deleteAll {
             font-size: 70px;
         }
+    }
+`;
+
+export const SwitchIcon = styled.div`
+    color: ${props => props.iconColor === 'gray' ? props.theme.colors.gray : props.iconColor === 'primary' ? props.theme.colors.primary : props.theme.colors.black};
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-device-width: 500px) {
+        font-size: 200%;
     }
 `;

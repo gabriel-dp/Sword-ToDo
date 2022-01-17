@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import usePersistedState from './utils/usePersistedState';
 
 import { ThemeProvider } from 'styled-components'; 
 import GlobalStyle from './style/global';
@@ -11,15 +12,7 @@ import TaskList  from './components/TaskList/TaskList';
 import TaskDetails from './components/TaskDetails/TaskDetails';
 
 const App = () => {
-	//get previous data from local storage
-	let previous_data = JSON.parse(window.localStorage.getItem('tasks_data'));
-	if (previous_data === null) previous_data = [];
-	const [tasks, setTasks] = useState (previous_data);
-
-	//saves the data in local storage when tasks is changed
-	useEffect(() => {
-		window.localStorage.setItem('tasks_data', JSON.stringify(tasks));
-	}, [tasks]);
+	const [tasks, setTasks] = usePersistedState('tasks', []);
 
 	const handleChangeComplete = (taskId) => {
 		const newTasks = tasks.map(task => {
@@ -146,7 +139,7 @@ const App = () => {
 		setTasks([]);
 	}
 
-	const[theme, setTheme] = useState(light);
+	const[theme, setTheme] = usePersistedState('theme', light);
 	const ToggleTheme = () => {
 		setTheme(theme.title === 'light' ? dark : light);
 	}

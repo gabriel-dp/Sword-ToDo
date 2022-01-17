@@ -3,7 +3,7 @@ import { BsFileEarmarkArrowDownFill } from 'react-icons/bs';
 import { MdSave, MdDeleteSweep, MdWbSunny, MdNightlightRound } from 'react-icons/md';
 import Switch from 'react-switch';
 
-import { Divisor, ManageContainer, ManageButton } from "./styles";
+import { Divisor, ManageContainer, ManageBlock, ManageButton, SwitchIcon } from "./styles";
 
 const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, theme}) => {
 
@@ -46,18 +46,33 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, th
         <>
             <Divisor/>
             <ManageContainer>
-                <div>
+                <ManageBlock>
                     <Switch
                         onChange={toggleTheme}
                         checked={theme.title === 'dark'}
-                        checkedIcon={<MdNightlightRound/>}
-                        uncheckedIcon={<MdWbSunny/>}
-                        height={24}
-                        offColor=''
-                        onColor=''
+                        checkedHandleIcon={
+                            <SwitchIcon iconColor='gray'>
+                                <MdNightlightRound/>
+                            </SwitchIcon>
+                        }
+                        uncheckedHandleIcon={
+                            <SwitchIcon iconColor='primary'>
+                                <MdWbSunny/>
+                            </SwitchIcon>
+                        }
+                        checkedIcon={false}
+                        uncheckedIcon={false}
+                        offColor='#07345e'
+                        onColor='#444'
+                        offHandleColor="#fff"
+                        onHandleColor="#7feeff"
+                        width={window.matchMedia("(max-device-width: 500px)").matches ? 0 : 55}
+                        height={window.matchMedia("(max-device-width: 500px)").matches ? 40 : 20}
+                        handleDiameter={window.matchMedia("(max-device-width: 500px)").matches ? 54 : 27}
+                        boxShadow="1px 1px 5px rgba(0, 0, 0, 0.6)"
                     />
-                </div>
-                <div>
+                </ManageBlock>
+                <ManageBlock>
                     <ManageButton className='importFile'>
                         <label htmlFor='file-upload'>
                             <input id='file-upload' type='file' onChange={onFileChange}/>
@@ -70,7 +85,7 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, th
                     <ManageButton className='deleteAll' onClick={handleDeleteAll} tasksEmpty={tasks.length === 0}>
                         <MdDeleteSweep/>
                     </ManageButton>
-                </div>
+                </ManageBlock>
             </ManageContainer>
         </>
     );
