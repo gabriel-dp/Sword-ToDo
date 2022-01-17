@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TaskTitle = styled.input`
     background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.title === 'light' ? props.theme.colors.primary : props.theme.colors.text};
     border: none;
     font-size: 30px;
     width: 100%;

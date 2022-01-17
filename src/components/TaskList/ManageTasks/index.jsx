@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { BsFileEarmarkArrowDownFill } from 'react-icons/bs';
 import { MdSave, MdDeleteSweep, MdWbSunny, MdNightlightRound } from 'react-icons/md';
 import Switch from 'react-switch';
+import { ThemeContext } from 'styled-components';
 
 import { Divisor, ManageContainer, ManageBlock, ManageButton, SwitchIcon } from "./styles";
 
-const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, theme}) => {
+const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme}) => {
+
+    const theme = useContext(ThemeContext);
 
     const [uploadedFile, setUploadedFile] = useState(null);
 
@@ -43,7 +46,7 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, th
     }
 
     return (
-        <>
+        <ThemeContext.Provider value = {theme}>
             <Divisor/>
             <ManageContainer>
                 <ManageBlock>
@@ -62,10 +65,10 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, th
                         }
                         checkedIcon={false}
                         uncheckedIcon={false}
-                        offColor='#07345e'
-                        onColor='#444'
-                        offHandleColor="#fff"
-                        onHandleColor="#7feeff"
+                        offColor={theme.colors.primary}
+                        onColor={theme.colors.element}
+                        offHandleColor={theme.colors.element}
+                        onHandleColor={theme.colors.primary}
                         width={window.matchMedia("(max-device-width: 500px)").matches ? 41 : 55}
                         height={window.matchMedia("(max-device-width: 500px)").matches ? 40 : 20}
                         handleDiameter={window.matchMedia("(max-device-width: 500px)").matches ? 54 : 27}
@@ -87,7 +90,7 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, th
                     </ManageButton>
                 </ManageBlock>
             </ManageContainer>
-        </>
+        </ThemeContext.Provider>
     );
 }
  

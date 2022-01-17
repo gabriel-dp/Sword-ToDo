@@ -10,7 +10,7 @@ export const TaskContainer = styled.div`
     align-items: center;
     color: ${props => !props.taskCompleted ? props.theme.colors.text : props.theme.colors.gray};
     text-decoration: ${props => props.taskCompleted ? 'line-through' : 'none'};
-    border-left: ${props => !props.taskCompleted ? `8px solid ${props.taskColor}` : '8px solid transparent'};
+    border-left: ${props => !props.taskCompleted ? props.taskColor === 'default' ? `8px solid ${props.theme.colors.primary}` : `8px solid ${props.taskColor}` : '8px solid transparent'};
     cursor: pointer;
     user-select: none;
     transition: background 0.2s ease;

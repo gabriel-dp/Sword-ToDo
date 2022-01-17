@@ -24,7 +24,8 @@ export const ColorCircle = styled.div`
     justify-content: center;
     align-items: center;
     font-size: 17px;
-    color: ${props => props.theme.colors.black};
+    color: ${props => props.circleColor === props.theme.colors.primary ? props.theme.colors.gray : props.theme.colors.black};
+    background-color: ${props => props.circleColor};
 
     @media (max-device-width: 500px) {
         height: 40px;

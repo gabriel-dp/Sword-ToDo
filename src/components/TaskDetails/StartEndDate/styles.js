@@ -16,7 +16,7 @@ export const DateContainer = styled.div`
     height: 60px;
 
     p {
-        color: ${props => props.theme.colors.text};
+        color: ${props => props.theme.title === 'light' ? props.theme.colors.primary : props.theme.colors.text};
         font-size: 17px;
         font-family: 'HemiHead';
     }

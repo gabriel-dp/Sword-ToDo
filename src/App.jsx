@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import usePersistedState from './utils/usePersistedState';
@@ -40,7 +40,7 @@ const App = () => {
 				id:	uuidv4(),
 				completed: false,
 				description: '',
-				color: '#7fffd4',
+				color: 'default',
 				startDate: new Date(),
 				endDate: '',
 			}];
@@ -65,7 +65,7 @@ const App = () => {
 
 	const handleChangeColor = (taskTitle, hex) => {
 		const newTasks = tasks.map(task => {
-			if (task.title === taskTitle) return { ...task, color: hex};
+			if (task.title === taskTitle) return { ...task, color: hex === theme.colors.primary ? 'default' : hex};
 			return task;
 		});
 
@@ -140,6 +140,7 @@ const App = () => {
 	}
 
 	const[theme, setTheme] = usePersistedState('theme', light);
+	const ThemeContext = createContext(theme);
 	const ToggleTheme = () => {
 		setTheme(theme.title === 'light' ? dark : light);
 	}
