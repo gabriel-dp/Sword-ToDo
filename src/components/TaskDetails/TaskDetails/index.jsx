@@ -69,7 +69,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleT
             </TaskConfigsContainer>
             <AutosizedTextarea
                 taskTitle={title}
-                description={description}
+                taskDescription={description}
                 handleChangeDescription={handleChangeDescription}
             />
             <StartEndDate
