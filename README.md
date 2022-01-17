@@ -94,7 +94,9 @@ npm start
 
 <br/>
 
-We believe that bringing knowledge from other areas into F1 in Schools project provides to the team members a huge professional growth. That's why we invest so much on programming tools for our team.
+> *We believe that bringing knowledge from other areas into F1 in Schools project provides to the team members a huge professional growth. That's why we invest so much on programming tools for our team.*
+
+<br/>
 
 View more about our work:
 
