@@ -33,7 +33,7 @@
 
 This project is part of the work of [SwordFish](https://www.instagram.com/swordfish.vca/) team to the F1 in Schools challenge.
 
-A Web todo list is a alternative more practical and sustainable than the use of hand-writting notes in stickers or notebook sheet, helping a lot the organization of the team.
+A web todo list is a alternative more practical and sustainable than the use of hand-writting notes in stickers or notebook sheet, helping a lot the organization of the team.
 
 The team decided to create the own tools to manage tasks and so Sword-ToDo was born.
 
@@ -44,48 +44,38 @@ The team decided to create the own tools to manage tasks and so Sword-ToDo was b
 With a minimalist interface, Sword-ToDo is very intuitive, you'll quickly understand all.
 ### 🏠 Main Page
 
-Add tasks only with title
-
-- Change task state of conclusion
-
-- Reorder a task dragging it
-
-- Import/Export tasks from/to a .json file 
-
-- Delete all tasks
-
-- Change app theme
+|Add tasks only with title|
+|-|
+|Change task state of conclusion|
+|Reorder a task dragging|
+|Import/Export tasks (.json file) |
+|Delete all tasks|
+|Change app theme|
 
 ---
 
-### 🖌 Personalizing the task
+### 🖌 &nbsp;Task Details Editor
 
 Click on a task and it will open the Task Details Editor
 
-- Edit task title
-
-- Delete task
-
-- Change task color 
-
-- Add a description 
-
-- Define start and end dates 
+|Edit task title|
+|-|
+|Delete Task|
+|Change task color|
+|Add a description|
+|Define start and end dates|
 
 <br/>
 
 ## Running locally
 
-```python
+```bash
 # Clone
-
 git clone https://github.com/gabrieldp23/Sword-ToDo.git
 
 # Node modules
-
 npm install
 
 # Open project on localhost
-
 npm start
 ```
