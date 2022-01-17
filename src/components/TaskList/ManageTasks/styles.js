@@ -16,7 +16,7 @@ export const ManageContainer = styled.div`
     height: 30px;
     margin-top: 35px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 
     @media (max-device-width: 500px) {
@@ -52,13 +52,11 @@ export const ManageButton = styled.button`
         margin-right: 3px;
     }
     
-    &.saveTasks {
-        color: red;
-        transition: color 0.5s ease;
-    }
-    
+    &.saveTasks,
     &.deleteAll {
-        transition: color 0.5s ease;
+        color: ${props => props.tasksEmpty ? props.theme.colors.element : props.theme.colors.primary};
+        cursor: ${props => props.tasksEmpty ? 'auto' : 'pointer'};
+        transition: color 0.3s ease;
     }
     
 

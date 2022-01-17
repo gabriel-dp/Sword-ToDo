@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { BsFileEarmarkArrowDownFill } from 'react-icons/bs';
-import { MdSave, MdDeleteSweep } from 'react-icons/md';
+import { MdSave, MdDeleteSweep, MdWbSunny, MdNightlightRound } from 'react-icons/md';
+import Switch from 'react-switch';
 
 import { Divisor, ManageContainer, ManageButton } from "./styles";
 
-const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll}) => {
+const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme, theme}) => {
 
     const [uploadedFile, setUploadedFile] = useState(null);
 
@@ -45,18 +46,31 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll}) => {
         <>
             <Divisor/>
             <ManageContainer>
-                <ManageButton className='importFile'>
-                    <label htmlFor='file-upload'>
-                        <input id='file-upload' type='file' onChange={onFileChange}/>
-                        <BsFileEarmarkArrowDownFill/>
-                    </label>
-                </ManageButton>
-                <ManageButton className='saveTasks' onClick={FileExport} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
-                    <MdSave/>
-                </ManageButton>
-                <ManageButton className='deleteAll' onClick={handleDeleteAll} style={(tasks.length === 0) ? {color:'#444', cursor:'auto'} : {color:'aquamarine'}}>
-                    <MdDeleteSweep/>
-                </ManageButton>
+                <div>
+                    <Switch
+                        onChange={toggleTheme}
+                        checked={theme.title === 'dark'}
+                        checkedIcon={<MdNightlightRound/>}
+                        uncheckedIcon={<MdWbSunny/>}
+                        height={24}
+                        offColor=''
+                        onColor=''
+                    />
+                </div>
+                <div>
+                    <ManageButton className='importFile'>
+                        <label htmlFor='file-upload'>
+                            <input id='file-upload' type='file' onChange={onFileChange}/>
+                            <BsFileEarmarkArrowDownFill/>
+                        </label>
+                    </ManageButton>
+                    <ManageButton className='saveTasks' onClick={FileExport} tasksEmpty={tasks.length === 0}>
+                        <MdSave/>
+                    </ManageButton>
+                    <ManageButton className='deleteAll' onClick={handleDeleteAll} tasksEmpty={tasks.length === 0}>
+                        <MdDeleteSweep/>
+                    </ManageButton>
+                </div>
             </ManageContainer>
         </>
     );

@@ -53,13 +53,11 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 		>
 			<TaskContainer
 				onClick={handleTaskDetailsClick}
-				style={task.completed ? 
-					{color:'lightgray', textDecoration: 'line-through'} : 
-					{borderLeft: `8px solid ${task.color}`}
-				}
+				taskCompleted={task.completed}
+				taskColor={task.color}
 				ref={nodeRef}
 			>
-				<TaskTitleContainer	style={task.completed ? {marginLeft: 8} : {}}>
+				<TaskTitleContainer>
 					<p>{task.title}</p>
 				</TaskTitleContainer>
 				<ButtonsContainer>

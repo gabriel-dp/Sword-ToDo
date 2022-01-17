@@ -5,7 +5,7 @@ import AddTask from './AddTask';
 import Task from './Task';
 import ManageTasks from './ManageTasks'
 
-const TaskList = ({tasks, handleTaskAddition, handleChangeComplete, handleChangeOrder, handleImportTasks, handleDeleteAll}) => {
+const TaskList = ({tasks, handleTaskAddition, handleChangeComplete, handleChangeOrder, handleImportTasks, handleDeleteAll, toggleTheme, theme}) => {
     return (
         <>
             <Header text="Sword-ToDo"/>
@@ -25,6 +25,8 @@ const TaskList = ({tasks, handleTaskAddition, handleChangeComplete, handleChange
                 tasks={tasks}
                 handleImportTasks={handleImportTasks}
                 handleDeleteAll={handleDeleteAll}
+                toggleTheme={toggleTheme}
+                theme={theme}
             />
         </>
     );

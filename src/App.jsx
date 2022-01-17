@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {v4 as uuidv4} from 'uuid';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Switch from 'react-switch';
 
 import { ThemeProvider } from 'styled-components'; 
 import GlobalStyle from './style/global';
@@ -159,22 +158,17 @@ const App = () => {
 			<div className='container'>
 				<Routes>
 					<Route 
-						path="/" exact 
-						element={
-							<>
-								<TaskList 
-									tasks={tasks} 
-									handleTaskAddition={handleTaskAddition}
-									handleChangeComplete={handleChangeComplete} 
-									handleChangeOrder={handleChangeOrder}
-									handleImportTasks={handleImportTasks}
-									handleDeleteAll={handleDeleteAll}
-								/>
-								<Switch
-									onChange={ToggleTheme}
-									checked={theme.title === 'dark'}
-								/>
-							</>
+						path="/" exact element={
+							<TaskList 
+								tasks={tasks} 
+								handleTaskAddition={handleTaskAddition}
+								handleChangeComplete={handleChangeComplete} 
+								handleChangeOrder={handleChangeOrder}
+								handleImportTasks={handleImportTasks}
+								handleDeleteAll={handleDeleteAll}
+								toggleTheme={ToggleTheme}
+								theme={theme}
+							/>
 						} 
 						/>
 					<Route
