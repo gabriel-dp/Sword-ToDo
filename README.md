@@ -1,6 +1,5 @@
 <br/>
 <br/>
-<br/>
 
 <p align=center>
     <a href='https://gabrieldp23.github.io/Sword-ToDo/'>
@@ -27,6 +26,7 @@
     <img width=18% src='./docs/mobile.png'>
 </div>
 
+<br/>
 <br/>
 
 ## Introduction
