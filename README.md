@@ -1,4 +1,6 @@
 <br/>
+<br/>
+<br/>
 
 <p align=center>
     <a href='https://gabrieldp23.github.io/Sword-ToDo/'>
@@ -7,9 +9,13 @@
 </p>
 <h1 align=center>Sword-ToDo</h1> 
 
+<br/>
+
 <p align=center>
     <img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black'>
+    &nbsp;
     <img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'>
+    &nbsp;
     <img src='https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white'>
 </p>    
 
