@@ -8,14 +8,13 @@
 </p>
 <h1 align=center>Sword-ToDo</h1> 
 
-<br/>
-
 <p align=center>
-    <img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black'>
+    <a href='https://gabrieldp23.github.io/Sword-ToDo'>Click here to view live project</a><br><br/>
+    <img height=30 src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black'>
     &nbsp;
-    <img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'>
+    <img height=35 src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'>
     &nbsp;
-    <img src='https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white'>
+    <img height=30 src='https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white'>
 </p>    
 
 <br/>
@@ -79,3 +78,26 @@ npm install
 # Open project on localhost
 npm start
 ```
+
+<br/>
+<br/>
+
+## SwordFish &nbsp;<img height="13px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/125px-Flag_of_Brazil.svg.png"/>
+
+🏎 F1 in Schools team of Escola Sesi Bahia
+
+📌 Vitória da Conquista - BA
+
+🏆 2nd place 2021 Nationals
+
+⏳ 2022 World Finals will happen in May, wait for us...
+
+<br/>
+
+We believe that bringing knowledge from other areas into F1 in Schools project provides to the team members a huge professional growth. That's why we invest so much on programming tools for our team.
+
+View more about our work:
+
+<a href='https://www.instagram.com/swordfish.vca/'>
+    <img src='https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white'>
+</a>
