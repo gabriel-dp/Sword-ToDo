@@ -1,19 +1,25 @@
-# Sword-ToDo 
-
-<br/><br/>
+<br/>
 
 <p align=center>
-    <img width=100 src='./docs/sword-todo-logo.png'/>
+    <a href='https://gabrieldp23.github.io/Sword-ToDo/'>
+        <img width=100 src='./docs/sword-todo-logo.png'/>
+    </a>
 </p>
+<h1 align=center>Sword-ToDo</h1> 
 
 <p align=center>
-    Sword-ToDo is a Web application made with React library.&nbsp;
-    <img width=15 src='https://cdn.svgporn.com/logos/react.svg'>
-</p>
+    <img src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black'>
+    <img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'>
+    <img src='https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white'>
+</p>    
 
-<p align=center href='https://gabrieldp23.github.io/Sword-ToDo/'>
-    Click here to go to website
-</p>
+<br/>
+
+<div align=center>
+    <img width=65% src='./docs/desktop.png'>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <img width=18% src='./docs/mobile.png'>
+</div>
 
 <br/>
 
@@ -29,51 +35,51 @@ The team decided to create the own tools to manage tasks and so Sword-ToDo was b
 
 ## Functionalities
 
-With a minimalist interface, Sword-ToDo is very intuitive, and you'll understand all quickly.
+With a minimalist interface, Sword-ToDo is very intuitive, you'll quickly understand all.
 ### 🏠 Main Page
 
-<div>
-<img align=right height=242 src='./docs/task-list-print.png'/>
+Add tasks only with title
 
-Add a task ( just insert the name )
+- Change task state of conclusion
 
-```
-- Click on the checkbox to complete the task
+- Reorder a task dragging it
 
-- Drag a task up or down to reorder
-
-- Import tasks from .json file 
-
-- Export tasks to a .json file
+- Import/Export tasks from/to a .json file 
 
 - Delete all tasks
-```
-</div>
+
+- Change app theme
 
 ---
 
-### 🖊 Personalizing the task
-
-<div>
-<img align=right height=242 src='./docs/task-details-print.png'/>
+### 🖌 Personalizing the task
 
 Click on a task and it will open the Task Details Editor
 
-```
-- Rename task title
+- Edit task title
 
 - Delete task
 
-- Change the task color 
+- Change task color 
 
 - Add a description 
 
 - Define start and end dates 
-```
-</div>
 
 <br/>
 
-## Open project
+## Running locally
 
-⚠ Not finished yet!
+```python
+# Clone
+
+git clone https://github.com/gabrieldp23/Sword-ToDo.git
+
+# Node modules
+
+npm install
+
+# Open project on localhost
+
+npm start
+```
