@@ -1,34 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { TasksContext } from '../../App'; 
 
 import Header from './Header';
 import AddTask from './AddTask';
 import Task from './Task';
 import ManageTasks from './ManageTasks'
 
-const TaskList = ({tasks, handleTaskAddition, handleChangeComplete, handleChangeOrder, handleImportTasks, handleDeleteAll, toggleTheme, theme}) => {
+const TaskList = () => {
+    const tasksData = useContext(TasksContext);
+
+    console.log(tasksData)
+
     return (
-        <>
+        <TasksContext.Provider value={tasksData}>
             <Header text="Sword-ToDo"/>
-            <AddTask handleTaskAddition={handleTaskAddition}/>
+            <AddTask/>
             {
-                tasks.map((task, index) => (
+                tasksData.tasks.map((task, index) => (
                     <Task 
                         index={index}
                         key={task.id}
-                        task={task} 
-                        handleChangeComplete={handleChangeComplete}
-                        handleChangeOrder={handleChangeOrder}
+                        task={task}
                     />
                 ))
             }
-            <ManageTasks
-                tasks={tasks}
-                handleImportTasks={handleImportTasks}
-                handleDeleteAll={handleDeleteAll}
-                toggleTheme={toggleTheme}
-                theme={theme}
-            />
-        </>
+            <ManageTasks/>
+        </TasksContext.Provider>
     );
 };
 

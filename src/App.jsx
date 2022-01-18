@@ -11,21 +11,14 @@ import dark from './style/themes/dark';
 import TaskList  from './components/TaskList/TaskList';
 import TaskDetails from './components/TaskDetails/TaskDetails';
 
+export const TasksContext= createContext();
+
 const App = () => {
 	const [tasks, setTasks] = usePersistedState('tasks', []);
 
-	const handleChangeComplete = (taskId) => {
-		const newTasks = tasks.map(task => {
-			if (task.id === taskId) return { ...task, completed: !task.completed };
-			return task;
-		});
-
-		setTasks(newTasks);
-	}
-
-	const handleTaskAddition = (taskTitle) => {
+	const TaskAdd = (taskTitle) => {
 		const titleFixed = ((taskTitle).replace(/\s+/g, ' ')).trim() //remove extra spaces
-
+		
 		if (titleFixed !== '') {
 			let isRepeated = false;
 			tasks.map(task => {
@@ -34,7 +27,7 @@ const App = () => {
 				}
 				return 0;
 			});
-
+			
 			const newTasks = [...tasks, {
 				title: titleFixed,
 				id:	uuidv4(),
@@ -44,35 +37,26 @@ const App = () => {
 				startDate: new Date(),
 				endDate: '',
 			}];
-	
+			
 			if (!isRepeated) setTasks(newTasks);
 		}
 	}
 
-	const handleTaskDelete = (taskTitle) => {
+	const TaskDelete = (taskTitle) => {
 		const newTasks = tasks.filter(task => task.title !== taskTitle);
 		setTasks(newTasks);
 	}
 
-	const handleChangeDescription = (taskTitle, text) => {
+	const ChangeCompleteStatus = (taskId) => {
 		const newTasks = tasks.map(task => {
-			if (task.title === taskTitle) return { ...task, description: text};
+			if (task.id === taskId) return { ...task, completed: !task.completed };
 			return task;
 		});
-
+		
 		setTasks(newTasks);
 	}
-
-	const handleChangeColor = (taskTitle, hex) => {
-		const newTasks = tasks.map(task => {
-			if (task.title === taskTitle) return { ...task, color: hex === theme.colors.primary ? 'default' : hex};
-			return task;
-		});
-
-		setTasks(newTasks);
-	}
-
-	const handleChangeOrder = (index, movement) => {
+	
+	const ChangeOrder = (index, movement) => {
 
 		var newTasks;
 
@@ -95,8 +79,8 @@ const App = () => {
 		setTasks([]);
 		setTasks(newTasks);
 	}
-
-	const handleChangeTitle = (taskTitle, newTaskTitle) => {
+	
+	const ChangeTitle = (taskTitle, newTaskTitle) => {
 		const newTasks = tasks.map(task => {
 			if (task.title === taskTitle) {
 				return { ...task, title: newTaskTitle};
@@ -107,7 +91,25 @@ const App = () => {
 		setTasks(newTasks);
 	}
 
-	const handleChangeDates = (taskTitle, startDate, endDate) => {
+	const ChangeColor = (taskTitle, hex) => {
+		const newTasks = tasks.map(task => {
+			if (task.title === taskTitle) return { ...task, color: hex === theme.colors.primary ? 'default' : hex};
+			return task;
+		});
+
+		setTasks(newTasks);
+	}
+
+	const ChangeDescription = (taskTitle, text) => {
+		const newTasks = tasks.map(task => {
+			if (task.title === taskTitle) return { ...task, description: text};
+			return task;
+		});
+
+		setTasks(newTasks);
+	}
+
+	const ChangeDates = (taskTitle, startDate, endDate) => {
 		const newTasks = tasks.map(task => {
 			if (task.title === taskTitle) return { ...task, startDate: startDate, endDate: endDate};
 			return task;
@@ -116,7 +118,7 @@ const App = () => {
 		setTasks(newTasks);
 	}
 
-	const handleImportTasks = (importedTasks) => {
+	const ImportTasks = (importedTasks) => {
 		let newTasks = importedTasks.map(task => {
 			let repeated = false;
 			tasks.map(oldTask => {
@@ -135,52 +137,33 @@ const App = () => {
 		setTasks(tasks.concat(newTasks));
 	}
 
-	const handleDeleteAll = () => {
+	const DeleteAll = () => {
 		setTasks([]);
 	}
 
 	const[theme, setTheme] = usePersistedState('theme', dark);
-	const ThemeContext = createContext(theme);
 	const ToggleTheme = () => {
 		setTheme(theme.title === 'light' ? dark : light);
 	}
 
 	return (
+		<TasksContext.Provider value={{tasks, TaskAdd, TaskDelete, ChangeOrder, ChangeCompleteStatus, ChangeTitle, ChangeColor, ChangeDescription, ChangeDates, ImportTasks, DeleteAll, ToggleTheme}}>
 		<ThemeProvider theme={theme}>
 		<GlobalStyle/>
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<div className='container'>
 				<Routes>
 					<Route 
-						path="/" exact element={
-							<TaskList 
-								tasks={tasks} 
-								handleTaskAddition={handleTaskAddition}
-								handleChangeComplete={handleChangeComplete} 
-								handleChangeOrder={handleChangeOrder}
-								handleImportTasks={handleImportTasks}
-								handleDeleteAll={handleDeleteAll}
-								toggleTheme={ToggleTheme}
-								theme={theme}
-							/>
-						} 
-						/>
+						path="/" exact element={<TaskList/>} 
+					/>
 					<Route
-						path="/:taskTitle" exact element={
-							<TaskDetails
-								tasks={tasks}
-								handleChangeTitle={handleChangeTitle}
-								handleTaskDelete={handleTaskDelete}
-								handleChangeColor={handleChangeColor}
-								handleChangeDescription={handleChangeDescription}
-								handleChangeDates={handleChangeDates}
-							/>
-						}
+						path="/:taskTitle" exact element={<TaskDetails/>}
 					/>
 				</Routes>
 			</div>
 		</BrowserRouter>
 		</ThemeProvider>
+		</TasksContext.Provider>
 	);
 }
 

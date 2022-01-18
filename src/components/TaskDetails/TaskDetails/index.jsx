@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaTrash } from 'react-icons/fa';
+
+import { TasksContext } from '../../../App';
 
 import ColorSelector from '../ColorSelector';
 import AutosizedTextarea from '../AutosizedTextarea';
@@ -9,7 +11,8 @@ import StartEndDate from '../StartEndDate';
 
 import { TaskTitle, TaskConfigsContainer, ButtonsContainer, DeleteTaskButton, BackButtonContainer } from './styles';
 
-const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleTaskDelete, handleChangeDates, handleChangeTitle}) => {
+const TaskDetails = () => {
+    const tasksData = useContext(TasksContext);
     
     //gets the name of the task to be edited
     const params = useParams();
@@ -17,7 +20,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleT
 
     //gets the task data with the name
     var title, description, color, initialStartDate, initialEndDate = '';
-    tasks.map(task => {
+    tasksData.tasks.map(task => {
         if (task.title === taskName) {
             title = task.title;
             description = task.description;
@@ -35,7 +38,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleT
             firstUpdate.current = false;
             return;
         }
-        handleChangeTitle(title, newTaskTitle);
+        tasksData.ChangeTitle(title, newTaskTitle);
         navigate(`/${(newTaskTitle).replace(/[\s]/g, '_')}`)
     }, [newTaskTitle]);
     const handleInputTitleChange = (e) => {
@@ -44,7 +47,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleT
     
     //changes the selected color
     const handleClickColor = (color) => {
-        handleChangeColor(taskName, color);
+        tasksData.ChangeColor(taskName, color);
     }
     
     //navigates back to home
@@ -54,7 +57,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleT
     }
 
     return ( 
-        <>
+        <TasksContext.Provider value={tasksData}>
             <TaskTitle type='text' value={newTaskTitle} onChange={handleInputTitleChange}/>
             <TaskConfigsContainer>
                 <ColorSelector 
@@ -62,7 +65,7 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleT
                     handleClickColor={handleClickColor}
                 />
                 <ButtonsContainer>
-                    <DeleteTaskButton onClick={() => {handleTaskDelete(taskName); backToHome();}}>
+                    <DeleteTaskButton onClick={() => {tasksData.TaskDelete(taskName); backToHome();}}>
                         <FaTrash/>
                     </DeleteTaskButton>
                 </ButtonsContainer>
@@ -70,18 +73,18 @@ const TaskDetails = ({tasks, handleChangeDescription, handleChangeColor, handleT
             <AutosizedTextarea
                 taskTitle={title}
                 taskDescription={description}
-                handleChangeDescription={handleChangeDescription}
+                handleChangeDescription={tasksData.ChangeDescription}
             />
             <StartEndDate
                 taskName={taskName}
-                handleChangeDates={handleChangeDates}
+                handleChangeDates={tasksData.ChangeDates}
                 initialStartDate={initialStartDate}
                 initialEndDate={initialEndDate}
             />
             <BackButtonContainer>
                 <Button onClick={backToHome}>Back</Button>
             </BackButtonContainer>
-        </>
+        </TasksContext.Provider>
     );
 }
  

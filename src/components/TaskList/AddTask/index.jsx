@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import { TasksContext } from '../../../App';
 
 import MainButton from '../../Button';
 
 import { AddTaskContainer, MainInput } from './styles'
 
-const AddTask = ({handleTaskAddition}) => {
+const AddTask = () => {
+    const tasksData = useContext(TasksContext);
+
     const [inputData, setInputData] = useState('');
 
     const handleInputChange = (e) => {
@@ -13,7 +17,7 @@ const AddTask = ({handleTaskAddition}) => {
 
     //subimits the input data
     const handleAddTaskClick = () => {
-        handleTaskAddition(inputData);
+        tasksData.TaskAdd(inputData);
         setInputData('');
     }
 
@@ -23,18 +27,20 @@ const AddTask = ({handleTaskAddition}) => {
     };
 
     return (
-        <AddTaskContainer>
-            <MainInput 
-                onChange={handleInputChange} 
-                onKeyPress={handleKeypress}
-                value={inputData} 
-                className="add-task-input" 
-                type="text"
-            />
-            <MainButton onClick={handleAddTaskClick}>
-                Add
-            </MainButton>
-        </AddTaskContainer>
+        <TasksContext.Provider value={tasksData}>
+            <AddTaskContainer>
+                <MainInput 
+                    onChange={handleInputChange} 
+                    onKeyPress={handleKeypress}
+                    value={inputData} 
+                    className="add-task-input" 
+                    type="text"
+                />
+                <MainButton onClick={handleAddTaskClick}>
+                    Add
+                </MainButton>
+            </AddTaskContainer>
+        </TasksContext.Provider>
     );
 }
  

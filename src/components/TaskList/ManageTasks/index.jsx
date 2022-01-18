@@ -2,19 +2,21 @@ import React, { useState, useEffect, useContext } from 'react';
 import { BsFileEarmarkArrowDownFill } from 'react-icons/bs';
 import { MdSave, MdDeleteSweep, MdWbSunny, MdNightlightRound } from 'react-icons/md';
 import Switch from 'react-switch';
+
 import { ThemeContext } from 'styled-components';
+import { TasksContext } from '../../../App';
 
 import { Divisor, ManageContainer, ManageBlock, ManageButton, SwitchIcon } from "./styles";
 
-const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme}) => {
-
+const ManageTasks = () => {
+    const tasksData = useContext(TasksContext);
     const theme = useContext(ThemeContext);
 
     const [uploadedFile, setUploadedFile] = useState(null);
 
     useEffect(() => {
         if (uploadedFile !== null) {
-            handleImportTasks(JSON.parse(uploadedFile));
+            tasksData.ImportTasks(JSON.parse(uploadedFile));
         }
     }, [uploadedFile])
     
@@ -35,8 +37,8 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme}) =
     }
 
     const FileExport = () => {
-        if (tasks.length !== 0) {
-            const fileData = JSON.stringify(tasks);
+        if (tasksData.tasks.length !== 0) {
+            const fileData = JSON.stringify(tasksData.tasks);
             const url= URL.createObjectURL(new Blob([fileData], {type: "text/plain"}));
             const link = document.createElement('a');
             link.download = 'sword-tasks.json';
@@ -46,12 +48,13 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme}) =
     }
 
     return (
-        <ThemeContext.Provider value = {theme}>
+        <TasksContext.Provider value={tasksData}>
+        <ThemeContext.Provider value={theme}>
             <Divisor/>
             <ManageContainer>
                 <ManageBlock>
                     <Switch
-                        onChange={toggleTheme}
+                        onChange={tasksData.ToggleTheme}
                         checked={theme.title === 'dark'}
                         checkedHandleIcon={
                             <SwitchIcon iconColor='gray'>
@@ -82,15 +85,16 @@ const ManageTasks = ({tasks, handleImportTasks, handleDeleteAll, toggleTheme}) =
                             <BsFileEarmarkArrowDownFill/>
                         </label>
                     </ManageButton>
-                    <ManageButton className='saveTasks' onClick={FileExport} tasksEmpty={tasks.length === 0}>
+                    <ManageButton className='saveTasks' onClick={FileExport} tasksEmpty={tasksData.tasks.length === 0}>
                         <MdSave/>
                     </ManageButton>
-                    <ManageButton className='deleteAll' onClick={handleDeleteAll} tasksEmpty={tasks.length === 0}>
+                    <ManageButton className='deleteAll' onClick={tasksData.DeleteAll} tasksEmpty={tasksData.tasks.length === 0}>
                         <MdDeleteSweep/>
                     </ManageButton>
                 </ManageBlock>
             </ManageContainer>
         </ThemeContext.Provider>
+        </TasksContext.Provider>
     );
 }
  

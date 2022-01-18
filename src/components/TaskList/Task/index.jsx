@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import { FaRegDotCircle, FaRegCircle, FaStream} from 'react-icons/fa';
+
+import { TasksContext } from '../../../App'; 
 
 import { TaskContainer, 
 	TaskTitleContainer,
@@ -9,7 +11,9 @@ import { TaskContainer,
 	DescriptionIcon,
 	ToogleCompletedButton } from './styles';
 
-const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
+const Task = ({index, task}) => {
+	const tasksData = useContext(TasksContext);
+
 	//disable warning
 	const nodeRef = React.useRef(null);
 
@@ -26,7 +30,7 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	const [allowClick, setAllowClick] = useState(false); 					//allow the click on hold a little bit on drag (fix mobile bug)
 	const handleDrag = (e, ui) => {
 		if (Math.abs(ui.y) >= 60) {
-			handleChangeOrder(index, (ui.y > 0));
+			tasksData.ChangeOrder(index, (ui.y > 0));
 		}
 
 		if (allowClick)	setTimeout(() => setAllowClick(false), 250);
@@ -41,35 +45,37 @@ const Task = ({index, task, handleChangeComplete, handleChangeOrder}) => {
 	}
 
 	return (
-		<Draggable
-			axis="y"
-			onDrag={handleDrag}
-			onStop={handleStopDrag}
-			onMouseDown={handleTouchDown}
-			bounds={index === 0 ? {top:0} : {}}
-			allowAnyClick={true}
-			cancel=".toogle-complete-button"
-			nodeRef={nodeRef}
-		>
-			<TaskContainer
-				onClick={handleTaskDetailsClick}
-				taskCompleted={task.completed}
-				taskColor={task.color}
-				ref={nodeRef}
+		<TasksContext.Provider value={tasksData}>
+			<Draggable
+				axis="y"
+				onDrag={handleDrag}
+				onStop={handleStopDrag}
+				onMouseDown={handleTouchDown}
+				bounds={index === 0 ? {top:0} : {}}
+				allowAnyClick={true}
+				cancel=".toogle-complete-button"
+				nodeRef={nodeRef}
 			>
-				<TaskTitleContainer>
-					<p>{task.title}</p>
-				</TaskTitleContainer>
-				<ButtonsContainer>
-					<DescriptionIcon>
-						{(task.description !== '') ? <FaStream/> : <></>}
-					</DescriptionIcon>
-					<ToogleCompletedButton className='toogle-complete-button' onClick={(event) => {handleChangeComplete(task.id); event.stopPropagation()}}>
-						{task.completed ? <FaRegDotCircle/> : <FaRegCircle/>}
-					</ToogleCompletedButton>
-				</ButtonsContainer>
-			</TaskContainer>
-		</Draggable>
+				<TaskContainer
+					onClick={handleTaskDetailsClick}
+					taskCompleted={task.completed}
+					taskColor={task.color}
+					ref={nodeRef}
+				>
+					<TaskTitleContainer>
+						<p>{task.title}</p>
+					</TaskTitleContainer>
+					<ButtonsContainer>
+						<DescriptionIcon>
+							{(task.description !== '') ? <FaStream/> : <></>}
+						</DescriptionIcon>
+						<ToogleCompletedButton className='toogle-complete-button' onClick={(event) => {tasksData.ChangeComplete(task.id); event.stopPropagation()}}>
+							{task.completed ? <FaRegDotCircle/> : <FaRegCircle/>}
+						</ToogleCompletedButton>
+					</ButtonsContainer>
+				</TaskContainer>
+			</Draggable>
+		</TasksContext.Provider>
 	);
 }
  
