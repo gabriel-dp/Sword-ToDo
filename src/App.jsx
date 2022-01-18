@@ -139,7 +139,7 @@ const App = () => {
 		setTasks([]);
 	}
 
-	const[theme, setTheme] = usePersistedState('theme', light);
+	const[theme, setTheme] = usePersistedState('theme', dark);
 	const ThemeContext = createContext(theme);
 	const ToggleTheme = () => {
 		setTheme(theme.title === 'light' ? dark : light);
