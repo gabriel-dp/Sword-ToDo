@@ -12,7 +12,7 @@
     <a href='https://gabrieldp23.github.io/Sword-ToDo'>Click here to view live project</a><br><br/>
     <img height=30 src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black'>
     &nbsp;
-    <img height=35 src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB'>
+    <img height=30 src='https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=20232A'>
     &nbsp;
     <img height=30 src='https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white'>
 </p>    
@@ -43,26 +43,28 @@ The team decided to create the own tools to manage tasks and so Sword-ToDo was b
 With a minimalist interface, Sword-ToDo is very intuitive, you'll quickly understand all.
 ### 🏠 Main Page
 
-|Add tasks only with title|
-|-|
-|Change task state of conclusion|
-|Reorder a task dragging|
-|Import/Export tasks (.json file) |
-|Delete all tasks|
-|Change app theme|
+Your start is here
+
+|**Add tasks only with title**|
+|:-|
+|**Change task state of conclusion**|
+|**Reorder tasks dragging (up or down)**|
+|**Import/Export tasks (.json file)**|
+|**Delete all tasks**|
+|**Change app theme (light or dark)**|
 
 ---
 
 ### 🖌 &nbsp;Task Details Editor
 
-Click on a task and it will open the Task Details Editor
+Click on a task and it will open the **Task Details Editor**
 
-|Edit task title|
-|-|
-|Delete Task|
-|Change task color|
-|Add a description|
-|Define start and end dates|
+|**Edit task title**|
+|:-|
+|**Delete task**|
+|**Change task color**|
+|**Add a description**|
+|**Define start and end dates**|
 
 <br/>
 
