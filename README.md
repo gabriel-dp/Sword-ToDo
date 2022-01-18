@@ -41,9 +41,12 @@ The team decided to create the own tools to manage tasks and so Sword-ToDo was b
 ## ⚙ Functionalities
 
 With a minimalist interface, Sword-ToDo is very intuitive, you'll quickly understand all.
+
 ### Main Page
 
-Your start is here
+Your start is here.
+
+<img align=right width=270 src='./docs/print-main.png'>
 
 |**Add tasks only with title**|
 |:-|
@@ -53,11 +56,15 @@ Your start is here
 |**Delete all tasks**|
 |**Change app theme (light or dark)**|
 
+<br/>
+
 ---
 
 ### Task Details Editor
 
-Click on a task and it will open the **Task Details Editor**
+Click on a task to edit it.
+
+<img align=right width=275 src='./docs/print-details.png'>
 
 |**Edit task title**|
 |:-|
@@ -66,6 +73,7 @@ Click on a task and it will open the **Task Details Editor**
 |**Add a description**|
 |**Define start and end dates**|
 
+<br/>
 <br/>
 
 ## 🖥 Running locally
