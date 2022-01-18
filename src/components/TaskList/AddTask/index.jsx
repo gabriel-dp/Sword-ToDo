@@ -12,7 +12,7 @@ const AddTask = () => {
     const [inputData, setInputData] = useState('');
 
     const handleInputChange = (e) => {
-        setInputData((e.target.value).replace(/[^a-zA-Z\d-+!$()" "]/, ''));
+        setInputData((e.target.value).replace(/[^a-zA-ZÀ-ú\d-+!$()" "]/, ''));
     }
 
     //subimits the input data

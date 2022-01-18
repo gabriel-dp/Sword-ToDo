@@ -42,7 +42,7 @@ const TaskDetails = () => {
         navigate(`/${(newTaskTitle).replace(/[\s]/g, '_')}`)
     }, [newTaskTitle]);
     const handleInputTitleChange = (e) => {
-        if (e.target.value !== '') setNewTaskTitle(((e.target.value).replace(/[^a-zA-Z\d-+!$()" "]/, '')).replace(/\s\s/g,' '));
+        if (e.target.value !== '') setNewTaskTitle(((e.target.value).replace(/[^a-zA-ZÀ-ú\d-+!$()" "]/, '')).replace(/\s\s/g,' '));
     }
     
     //changes the selected color
