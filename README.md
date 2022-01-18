@@ -28,7 +28,7 @@
 <br/>
 <br/>
 
-## Introduction
+## 📘 Introduction
 
 This project is part of the work of [SwordFish](https://www.instagram.com/swordfish.vca/) team to the F1 in Schools challenge.
 
@@ -38,10 +38,10 @@ The team decided to create the own tools to manage tasks and so Sword-ToDo was b
 
 <br/>
 
-## Functionalities
+## ⚙ Functionalities
 
 With a minimalist interface, Sword-ToDo is very intuitive, you'll quickly understand all.
-### 🏠 Main Page
+### Main Page
 
 Your start is here
 
@@ -55,7 +55,7 @@ Your start is here
 
 ---
 
-### 🖌 &nbsp;Task Details Editor
+### Task Details Editor
 
 Click on a task and it will open the **Task Details Editor**
 
@@ -68,7 +68,7 @@ Click on a task and it will open the **Task Details Editor**
 
 <br/>
 
-## Running locally
+## 🖥 Running locally
 
 ```bash
 # Clone
@@ -84,7 +84,7 @@ npm start
 <br/>
 <br/>
 
-## SwordFish &nbsp;<img height="13px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/125px-Flag_of_Brazil.svg.png"/>
+## <img height="13px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/125px-Flag_of_Brazil.svg.png"/>&nbsp; SwordFish &nbsp;<img height="13px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/125px-Flag_of_Brazil.svg.png"/>
 
 🏎 F1 in Schools team of Escola Sesi Bahia
 

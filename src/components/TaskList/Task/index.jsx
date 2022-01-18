@@ -9,7 +9,7 @@ import { TaskContainer,
 	TaskTitleContainer,
 	ButtonsContainer, 
 	DescriptionIcon,
-	ToogleCompletedButton } from './styles';
+	ToggleCompletedButton } from './styles';
 
 const Task = ({index, task}) => {
 	const tasksData = useContext(TasksContext);
@@ -35,6 +35,7 @@ const Task = ({index, task}) => {
 
 		if (allowClick)	setTimeout(() => setAllowClick(false), 250);
 	}	
+
 	//returns the container to default position
 	const handleStopDrag = (e, ui) => {
 		ui.node.style.transform = "translate(0,0)";
@@ -53,7 +54,7 @@ const Task = ({index, task}) => {
 				onMouseDown={handleTouchDown}
 				bounds={index === 0 ? {top:0} : {}}
 				allowAnyClick={true}
-				cancel=".toogle-complete-button"
+				cancel='.toggle-complete-button'
 				nodeRef={nodeRef}
 			>
 				<TaskContainer
@@ -69,9 +70,9 @@ const Task = ({index, task}) => {
 						<DescriptionIcon>
 							{(task.description !== '') ? <FaStream/> : <></>}
 						</DescriptionIcon>
-						<ToogleCompletedButton className='toogle-complete-button' onClick={(event) => {tasksData.ChangeComplete(task.id); event.stopPropagation()}}>
+						<ToggleCompletedButton className='toggle-complete-button' onClick={(event) => {tasksData.ChangeCompleteStatus(task.id); event.stopPropagation()}}>
 							{task.completed ? <FaRegDotCircle/> : <FaRegCircle/>}
-						</ToogleCompletedButton>
+						</ToggleCompletedButton>
 					</ButtonsContainer>
 				</TaskContainer>
 			</Draggable>

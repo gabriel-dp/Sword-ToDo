@@ -26,13 +26,6 @@ export const TaskContainer = styled.div`
     }
 `;
 
-/*
-style={task.completed ? 
-    {color:'lightgray', textDecoration: 'line-through'} : 
-    {borderLeft: `8px solid ${task.color}`}
-}
-*/
-
 export const TaskTitleContainer = styled.div`
     width: 80%;
 
@@ -69,7 +62,7 @@ export const DescriptionIcon = styled.div`
     }
 `;
 
-export const ToogleCompletedButton = styled.button`
+export const ToggleCompletedButton = styled.button`
     color: ${props => props.theme.colors.primary};
     border: none;
     background-color: transparent;

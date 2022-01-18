@@ -10,8 +10,6 @@ import ManageTasks from './ManageTasks'
 const TaskList = () => {
     const tasksData = useContext(TasksContext);
 
-    console.log(tasksData)
-
     return (
         <TasksContext.Provider value={tasksData}>
             <Header text="Sword-ToDo"/>
