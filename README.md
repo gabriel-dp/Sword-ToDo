@@ -2,14 +2,14 @@
 <br/>
 
 <p align=center>
-    <a href='https://gabrieldp23.github.io/Sword-ToDo/'>
+    <a href='https://gabriel-dp.github.io/Sword-ToDo/'>
         <img width=100 src='./docs/sword-todo-logo.png'/>
     </a>
 </p>
 <h1 align=center>Sword-ToDo</h1> 
 
 <p align=center>
-    <a href='https://gabrieldp23.github.io/Sword-ToDo'>Click here to view live project</a><br><br/>
+    <a href='https://gabriel-dp.github.io/Sword-ToDo'>Click here to view live project</a><br><br/>
     <img height=30 src='https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black'>
     &nbsp;
     <img height=30 src='https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=20232A'>
@@ -80,7 +80,7 @@ Click on a task to edit it.
 
 ```bash
 # Clone
-git clone https://github.com/gabrieldp23/Sword-ToDo.git
+git clone https://github.com/gabriel-dp/Sword-ToDo.git
 
 # Node modules
 npm install
